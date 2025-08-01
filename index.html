@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Slovenian Road Trip</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom styles to enhance Tailwind */
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F5F5F4; /* stone-100 */
+            color: #44403C; /* stone-700 */
+        }
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+        }
+        /* Style for editable elements */
+        [contenteditable="true"]:hover,
+        [contenteditable="true"]:focus {
+            outline: 2px dashed #2563EB; /* blue-600 */
+            background-color: rgba(37, 99, 235, 0.05);
+            border-radius: 4px;
+        }
+        .editable-media-container {
+            position: relative;
+            cursor: pointer;
+            overflow: hidden;
+            background-color: #E7E5E4; /* stone-200 */
+            width: 100%;
+            height: 100%;
+        }
+        .editable-media-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .editable-media-container:hover .editable-media-overlay {
+            opacity: 1;
+        }
+        .slovenian-accent-border {
+            border-width: 4px;
+            border-image: linear-gradient(to right, #DC2626, #2563EB, #FFFFFF) 1;
+        }
+        /* Style for the video hero */
+        .video-hero {
+            height: 100vh;
+            background-color: #44403C; /* Fallback background color */
+        }
+        .video-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+        /* Page switching logic */
+        .page {
+            display: none;
+        }
+        .page.active {
+            display: block;
+        }
+        .prose {
+            max-width: 65ch;
+        }
+        .prose p {
+            margin-bottom: 1.25em;
+        }
+        .prose ul {
+            list-style-type: disc;
+            padding-left: 1.5em;
+        }
+        .prose ul li {
+            margin-bottom: 0.5em;
+        }
+    </style>
+</head>
+<body class="bg-stone-100">
+
+    <!-- Header -->
+    <header class="bg-amber-900 shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold text-white">Slovenian Journey</div>
+            <nav>
+                <a href="#" class="nav-link text-white hover:text-amber-100 px-3 py-2 rounded-md text-sm font-medium" data-target="home-page">Home</a>
+                <a href="#" class="nav-link text-white hover:text-amber-100 px-3 py-2 rounded-md text-sm font-medium" data-target="home-page" data-scroll-to="#journey">The Trip</a>
+                <a href="#" class="text-white hover:text-amber-100 px-3 py-2 rounded-md text-sm font-medium">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div id="main-content">
+
+        <!-- Home Page -->
+        <div id="home-page" class="page active">
+            <!-- Video Hero Section -->
+            <section class="relative video-hero flex items-center justify-center text-center text-white overflow-hidden">
+                <video autoplay loop muted playsinline class="video-background" poster="https://placehold.co/1920x1080/44403c/FFFFFF?text=Your+Slovenian+Adventure+Video">
+                    <source src="julie en ik.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="relative z-10 bg-black bg-opacity-50 p-8 rounded-lg">
+                    <h1 contenteditable="true" class="text-5xl md:text-7xl font-bold mb-4">A Taste of Slovenia</h1>
+                    <p contenteditable="true" class="text-lg max-w-3xl mx-auto">An unforgettable 7-day road trip through emerald rivers, vineyard-covered hills, and charming villages.</p>
+                </div>
+            </section>
+
+            <!-- Links to Days Section -->
+            <section id="journey" class="py-20 bg-stone-50">
+                <div class="container mx-auto px-6">
+                    <h2 class="text-4xl font-bold text-center text-stone-800 mb-12">Follow Our Journey</h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 justify-center">
+                        <a href="#" class="nav-link block bg-white rounded-lg shadow-lg p-6 hover:shadow-xl hover:bg-stone-100 transform hover:-translate-y-1 transition text-center" data-target="day1-page"><h3 class="font-bold text-xl text-blue-700">Day 1</h3><p class="text-stone-600">The Fairytale Charm of Lake Bled</p></a>
+                        <a href="#" class="nav-link block bg-white rounded-lg shadow-lg p-6 hover:shadow-xl hover:bg-stone-100 transform hover:-translate-y-1 transition text-center" data-target="day2-page"><h3 class="font-bold text-xl text-green-700">Day 2</h3><p class="text-stone-600">Gorges and Giants</p></a>
+                        <a href="#" class="nav-link block bg-white rounded-lg shadow-lg p-6 hover:shadow-xl hover:bg-stone-100 transform hover:-translate-y-1 transition text-center" data-target="day3-page"><h3 class="font-bold text-xl text-red-800">Day 3</h3><p class="text-stone-600">Sipping Stories in Goriška Brda</p></a>
+                        <a href="#" class="nav-link block bg-white rounded-lg shadow-lg p-6 hover:shadow-xl hover:bg-stone-100 transform hover:-translate-y-1 transition text-center" data-target="day4-page"><h3 class="font-bold text-xl text-cyan-700">Day 4</h3><p class="text-stone-600">Salt, Sea, and Sunsets in Piran</p></a>
+                        <a href="#" class="nav-link block bg-white rounded-lg shadow-lg p-6 hover:shadow-xl hover:bg-stone-100 transform hover:-translate-y-1 transition text-center" data-target="day5-page"><h3 class="font-bold text-xl text-amber-800">Day 5</h3><p class="text-stone-600">Into the Earth's Belly</p></a>
+                        <a href="#" class="nav-link block bg-white rounded-lg shadow-lg p-6 hover:shadow-xl hover:bg-stone-100 transform hover:-translate-y-1 transition text-center" data-target="day6-page"><h3 class="font-bold text-xl text-indigo-700">Day 6</h3><p class="text-stone-600">Ljubljana's Lively Heart</p></a>
+                        <a href="#" class="nav-link block bg-white rounded-lg shadow-lg p-6 hover:shadow-xl hover:bg-stone-100 transform hover:-translate-y-1 transition text-center" data-target="day7-page"><h3 class="font-bold text-xl text-emerald-700">Day 7</h3><p class="text-stone-600">The Emerald Beauty of the Soča Valley</p></a>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Templated Day Pages -->
+        <template id="day-page-template">
+            <main class="container mx-auto px-6 py-12">
+                <header class="text-center mb-12">
+                    <p contenteditable="true" class="text-lg text-stone-500 day-meta">Day X | Category</p>
+                    <h2 contenteditable="true" class="text-6xl font-bold mt-2 day-title">Title Goes Here</h2>
+                </header>
+                
+                <section class="mb-12">
+                    <h3 contenteditable="true" class="text-3xl font-bold text-stone-700 mb-6">Gallery</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 auto-rows-fr gap-4">
+                        <div class="md:col-span-2 md:row-span-2 flex flex-col bg-white rounded-lg overflow-hidden shadow-lg">
+                            <div class="editable-media-container aspect-square"><img class="w-full h-full object-cover editable-image" src="https://placehold.co/1200x1200/a8a29e/FFFFFF?text=Large+Square" alt="Placeholder"><div class="editable-media-overlay"><span>Click to change image</span></div></div>
+                            <div class="p-4 flex-grow"><h4 contenteditable="true" class="font-bold text-lg">A Featured Moment</h4><p contenteditable="true" class="text-sm text-stone-600 mt-1">Add a more detailed description here for your most important photo of the day.</p></div>
+                        </div>
+                        <div class="flex flex-col bg-white rounded-lg overflow-hidden shadow-lg">
+                            <div class="editable-media-container aspect-[9/16]"><video class="w-full h-full object-cover editable-video" poster="https://placehold.co/900x1600/a8a29e/FFFFFF?text=Vertical+Video" muted loop playsinline><source src="" type="video/mp4"></video><div class="editable-media-overlay"><span>Click to change video</span></div></div>
+                            <div class="p-4 flex-grow"><h4 contenteditable="true" class="font-bold text-lg">Mobile Video</h4><p contenteditable="true" class="text-sm text-stone-600 mt-1">Describe this video clip.</p></div>
+                        </div>
+                        <div class="flex flex-col bg-white rounded-lg overflow-hidden shadow-lg">
+                            <div class="editable-media-container aspect-video"><img class="w-full h-full object-cover editable-image" src="https://placehold.co/1600x900/a8a29e/FFFFFF?text=Landscape" alt="Placeholder"><div class="editable-media-overlay"><span>Click to change image</span></div></div>
+                            <div class="p-4 flex-grow"><h4 contenteditable="true" class="font-bold text-lg">A Scenic View</h4><p contenteditable="true" class="text-sm text-stone-600 mt-1">Talk about the landscape.</p></div>
+                        </div>
+                        <div class="flex flex-col bg-white rounded-lg overflow-hidden shadow-lg">
+                            <div class="editable-media-container aspect-video"><img class="w-full h-full object-cover editable-image" src="https://placehold.co/1600x900/a8a29e/FFFFFF?text=Landscape" alt="Placeholder"><div class="editable-media-overlay"><span>Click to change image</span></div></div>
+                            <div class="p-4 flex-grow"><h4 contenteditable="true" class="font-bold text-lg">Another Shot</h4><p contenteditable="true" class="text-sm text-stone-600 mt-1">What happened here?</p></div>
+                        </div>
+                         <div class="flex flex-col bg-white rounded-lg overflow-hidden shadow-lg">
+                            <div class="editable-media-container aspect-[9/16]"><img class="w-full h-full object-cover editable-image" src="https://placehold.co/900x1600/a8a29e/FFFFFF?text=Vertical+Photo" alt="Placeholder"><div class="editable-media-overlay"><span>Click to change image</span></div></div>
+                            <div class="p-4 flex-grow"><h4 contenteditable="true" class="font-bold text-lg">Portrait Photo</h4><p contenteditable="true" class="text-sm text-stone-600 mt-1">A vertical photo's story.</p></div>
+                        </div>
+                        <div class="md:col-span-2 flex flex-col bg-white rounded-lg overflow-hidden shadow-lg">
+                             <div class="editable-media-container aspect-video"><img class="w-full h-full object-cover editable-image" src="https://placehold.co/1600x900/a8a29e/FFFFFF?text=Wide+Landscape" alt="Placeholder"><div class="editable-media-overlay"><span>Click to change image</span></div></div>
+                            <div class="p-4 flex-grow"><h4 contenteditable="true" class="font-bold text-lg">A Wide Panoramic</h4><p contenteditable="true" class="text-sm text-stone-600 mt-1">This wide shot captured the whole scene. Here's what was going on.</p></div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="mb-12">
+                    <h3 contenteditable="true" class="text-3xl font-bold text-stone-700 mb-6">Our Story</h3>
+                    <div contenteditable="true" class="prose max-w-none text-stone-700 leading-relaxed text-lg story-content">
+                        <p>This is where your detailed story for the day goes. Click here to start typing and replace this placeholder text. Describe the places you visited, the food you tasted, and the people you met. You can add as many paragraphs as you need to capture all the memories.</p>
+                        <p>For example, you could talk about the morning drive, the afternoon hike, and the evening meal. Be descriptive and bring your readers along on the journey with you!</p>
+                    </div>
+                </section>
+
+                <section class="mb-12 bg-lime-50 p-8 rounded-lg shadow-lg">
+                     <h3 contenteditable="true" class="text-3xl font-bold text-stone-700 mb-6">Highlights & Bites</h3>
+                     <div contenteditable="true" class="prose max-w-none text-stone-700 leading-relaxed text-lg highlights-content">
+                        <ul>
+                            <li>Tasting the famous Bled Cream Cake ('kremšnita').</li>
+                            <li>Ringing the wishing bell on Bled Island.</li>
+                            <li>Finding a hidden waterfall on a side trail.</li>
+                            <li>The delicious local wine we tried at dinner.</li>
+                        </ul>
+                     </div>
+                </section>
+            </main>
+        </template>
+        
+        <!-- Day Page Containers -->
+        <div id="day1-page" class="page"></div>
+        <div id="day2-page" class="page"></div>
+        <div id="day3-page" class="page"></div>
+        <div id="day4-page" class="page"></div>
+        <div id="day5-page" class="page"></div>
+        <div id="day6-page" class="page"></div>
+        <div id="day7-page" class="page"></div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-amber-900/90 text-white mt-16">
+        <div class="container mx-auto px-6 py-8">
+            <div class="slovenian-accent-border mb-8"></div>
+            <div class="flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+                <div>
+                    <h3 class="text-xl font-bold" contenteditable="true">Slovenian Journey</h3>
+                    <p class="text-stone-300" contenteditable="true">Exploring the sunny side of the Alps.</p>
+                </div>
+                <div class="mt-4 md:mt-0">
+                    <p contenteditable="true">&copy; 2024 Your Name Here. All Rights Reserved.</p>
+                    <p class="text-sm text-stone-400">Created with a passion for travel.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const dayData = {
+                day1: { meta: 'Day 1 | Alpine Wonders', title: 'The Fairytale Charm of Lake Bled', color: 'text-blue-700', story: '<p>Our journey began at the iconic Lake Bled... It was the perfect, sweet start to our Slovenian adventure.</p><p>Add more details here.</p>', highlights: '<ul><li>Tasting the famous Bled Cream Cake.</li><li>Ringing the wishing bell.</li></ul>' },
+                day2: { meta: 'Day 2 | Waterfalls & Wilderness', title: 'Gorges and Giants', color: 'text-green-700', story: '<p>Today was all about water. We started at Vintgar Gorge... feeling tiny amidst the grandeur of Triglav National Park.</p>', highlights: '<ul><li>Walking the Vintgar Gorge boardwalks.</li><li>Canoeing on Lake Bohinj.</li></ul>' },
+                day3: { meta: 'Day 3 | Vineyard Views', title: 'Sipping Stories in Goriška Brda', color: 'text-red-800', story: '<p>We drove to Goriška Brda, Slovenia\'s renowned wine region... a simple yet profound culinary experience.</p>', highlights: '<ul><li>Tasting Rebula wine.</li><li>Enjoying local prosciutto and cheese.</li></ul>' },
+                day4: { meta: 'Day 4 | A Touch of Venice', title: 'Salt, Sea, and Sunsets in Piran', color: 'text-cyan-700', story: '<p>From the green hills to the blue sea! We arrived in Piran... a wonderful contrast to the Alps.</p>', highlights: '<ul><li>Climbing the Piran bell tower.</li><li>Seafood dinner by the Adriatic sea.</li></ul>' },
+                day5: { meta: 'Day 5 | Underground Marvels', title: 'Into the Earth\'s Belly', color: 'text-amber-800', story: '<p>Today we explored the Karst region, starting with the magnificent Škocjan Caves... Its history was fascinating.</p>', highlights: '<ul><li>Exploring Škocjan Caves.</li><li>Visiting Predjama Castle.</li></ul>' },
+                day6: { meta: 'Day 6 | The Dragon City', title: 'Ljubljana\'s Lively Heart', color: 'text-indigo-700', story: '<p>We spent the day in Ljubljana, one of Europe\'s greenest capitals... a city built for people, not just for cars.</p>', highlights: '<ul><li>Strolling along the Ljubljanica River.</li><li>Visiting Ljubljana Castle.</li></ul>' },
+                day7: { meta: 'Day 7 | Nature\'s Masterpiece', title: 'The Emerald Beauty of the Soča Valley', color: 'text-emerald-700', story: '<p>The final leg of our trip took us to the Soča Valley... connected us deeply with the land.</p>', highlights: '<ul><li>Hiking along the Soča River.</li><li>Discovering Kozjak waterfall.</li></ul>' },
+            };
+
+            const template = document.getElementById('day-page-template').content;
+            
+            for (const day in dayData) {
+                const container = document.getElementById(`${day}-page`);
+                const clone = document.importNode(template, true);
+                
+                const titleEl = clone.querySelector('.day-title');
+                titleEl.textContent = dayData[day].title;
+                titleEl.classList.add(dayData[day].color);
+
+                clone.querySelector('.day-meta').textContent = dayData[day].meta;
+                clone.querySelector('.story-content').innerHTML = dayData[day].story;
+                clone.querySelector('.highlights-content').innerHTML = dayData[day].highlights;
+
+                container.appendChild(clone);
+            }
+
+
+            const navLinks = document.querySelectorAll('.nav-link');
+            const pages = document.querySelectorAll('.page');
+
+            // Navigation logic
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = link.dataset.target;
+                    const targetPage = document.getElementById(targetId);
+
+                    pages.forEach(page => page.classList.remove('active'));
+
+                    if (targetPage) {
+                        targetPage.classList.add('active');
+                        window.scrollTo(0, 0);
+                    }
+                    
+                    const scrollToSelector = link.dataset.scrollTo;
+                    if (targetId === 'home-page' && scrollToSelector) {
+                        setTimeout(() => {
+                           document.querySelector(scrollToSelector).scrollIntoView({ behavior: 'smooth' });
+                        }, 100);
+                    }
+                });
+            });
+
+            // Media editing logic
+            function setupMediaEditing() {
+                const mediaItems = document.querySelectorAll('.editable-media-container');
+                mediaItems.forEach(container => {
+                    container.addEventListener('click', (e) => {
+                        if (e.target.closest('[contenteditable="true"]')) {
+                            return;
+                        }
+
+                        const img = container.querySelector('.editable-image');
+                        const video = container.querySelector('.editable-video');
+
+                        if (img) {
+                            const newImageUrl = prompt('Please enter the new image URL:', img.src);
+                            if (newImageUrl) img.src = newImageUrl;
+                        } else if (video) {
+                            const newVideoUrl = prompt('Please enter the new video URL:');
+                            if (newVideoUrl) {
+                                video.querySelector('source').src = newVideoUrl;
+                                video.load();
+                                video.poster = '';
+                            }
+                        }
+                    });
+                });
+            }
+            
+            setupMediaEditing();
+        });
+    </script>
+</body>
+</html>
