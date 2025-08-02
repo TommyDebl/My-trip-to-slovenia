@@ -21,37 +21,12 @@
         h1, h2, h3, h4 {
             font-family: 'Playfair Display', serif;
         }
-        /* Style for editable elements */
-        [contenteditable="true"]:hover,
-        [contenteditable="true"]:focus {
-            outline: 2px dashed #3b82f6; /* blue-500 */
-            background-color: rgba(59, 130, 246, 0.1);
-            border-radius: 4px;
-        }
         .editable-media-container {
             position: relative;
-            cursor: pointer;
             overflow: hidden;
             background-color: #374151; /* gray-700 */
             width: 100%;
             height: 100%;
-        }
-        .editable-media-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(0, 0, 0, 0.5);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        .editable-media-container:hover .editable-media-overlay {
-            opacity: 1;
         }
         .slovenian-accent-border {
             border-width: 4px;
@@ -164,16 +139,16 @@
             <!-- Title Section -->
             <section class="dark-section text-center py-12">
                 <div class="container mx-auto px-6">
-                    <h1 contenteditable="true" class="text-5xl md:text-7xl font-bold mb-4 dark-text-primary">Proeven van Slovenië</h1>
-                    <p contenteditable="true" class="text-lg max-w-3xl mx-auto dark-text-secondary">Het onvergetelijk 7 daags avontuur van Julie & Tommy</p>
+                    <h1 class="text-5xl md:text-7xl font-bold mb-4 dark-text-primary">Proeven van Slovenië</h1>
+                    <p class="text-lg max-w-3xl mx-auto dark-text-secondary">Het onvergetelijk 7 daags avontuur van Julie & Tommy</p>
                 </div>
             </section>
 
             <!-- Introduction Text Section -->
             <section class="dark-section-alt py-16">
                 <div class="container mx-auto px-6">
-                    <h2 contenteditable="true" class="text-4xl font-bold text-center dark-text-primary mb-8">Van Wijn-missie tot Droom-roadtrip:<br>Slovenië in een Cabrio!</h2>
-                    <div contenteditable="true" class="prose max-w-3xl mx-auto text-lg dark-text-secondary leading-relaxed text-center">
+                    <h2 class="text-4xl font-bold text-center dark-text-primary mb-8">Van Wijn-missie tot Droom-roadtrip:<br>Slovenië in een Cabrio!</h2>
+                    <div class="prose max-w-3xl mx-auto text-lg dark-text-secondary leading-relaxed text-center">
                         <p>Het begon allemaal met een simpele wens: de befaamde oranje wijn uit Slovenië proeven, rechtstreeks van de bron. Voor vrienden Julie en Tommy werd deze missie al snel een verrassende rekensom. Wat als we de wijn gewoon zelf gaan halen? Geloof het of niet, een roadtrip met de cabrio bleek bijna sneller én goedkoper dan een paar flessen laten importeren! Eén probleem: een uitgestippelde roadtrip door de Sloveense wijnheuvels en verborgen parels? Die stond bij geen enkele reisagent in de catalogus. Gelukkig was er Nathalie van <a href="#" class="nav-link text-amber-400 hover:text-amber-300 font-bold" data-target="sponsors-page" data-scroll-to-sponsor="#azuriet-sponsor">Azuriet Reizen</a>. Met haar hulp werd onze impulsieve ‘wijn-run’ omgetoverd tot een onvergetelijke reis. Lees hier hoe ons avontuur begon!</p>
                     </div>
                 </div>
@@ -200,51 +175,51 @@
         <template id="day-page-template">
             <main class="container mx-auto px-6 py-12">
                 <header class="text-center mb-12">
-                    <p contenteditable="true" class="text-lg dark-text-secondary day-meta">Dag X | Categorie</p>
-                    <h2 contenteditable="true" class="text-6xl font-bold mt-2 day-title">Titel komt hier</h2>
+                    <p class="text-lg dark-text-secondary day-meta">Dag X | Categorie</p>
+                    <h2 class="text-6xl font-bold mt-2 day-title">Titel komt hier</h2>
                 </header>
                 
                 <section class="mb-12">
-                    <h3 contenteditable="true" class="text-3xl font-bold dark-text-primary mb-6">Galerij</h3>
+                    <h3 class="text-3xl font-bold dark-text-primary mb-6">Galerij</h3>
                     <div class="grid grid-cols-2 md:grid-cols-4 auto-rows-fr gap-4">
                         <div class="md:col-span-2 md:row-span-2 flex flex-col dark-card rounded-lg overflow-hidden shadow-lg">
-                            <div class="editable-media-container aspect-square"><img class="w-full h-full object-cover editable-image" src="https://placehold.co/1200x1200/a8a29e/FFFFFF?text=Large+Square" alt="Placeholder"><div class="editable-media-overlay"><span>Klik om afbeelding te wijzigen</span></div></div>
-                            <div class="p-4 flex-grow"><h4 contenteditable="true" class="font-bold text-lg dark-text-primary">Een Uitgelicht Moment</h4><p contenteditable="true" class="text-sm dark-text-secondary mt-1">Voeg hier een meer gedetailleerde beschrijving toe voor je belangrijkste foto van de dag.</p></div>
+                            <div class="editable-media-container aspect-square"><img class="w-full h-full object-cover editable-image" src="https://placehold.co/1200x1200/a8a29e/FFFFFF?text=Large+Square" alt="Placeholder"></div>
+                            <div class="p-4 flex-grow"><h4 class="font-bold text-lg dark-text-primary">Een Uitgelicht Moment</h4><p class="text-sm dark-text-secondary mt-1">Voeg hier een meer gedetailleerde beschrijving toe voor je belangrijkste foto van de dag.</p></div>
                         </div>
                         <div class="flex flex-col dark-card rounded-lg overflow-hidden shadow-lg">
-                            <div class="editable-media-container aspect-[9/16]"><video class="w-full h-full object-cover editable-video" poster="https://placehold.co/900x1600/a8a29e/FFFFFF?text=Vertical+Video" muted loop playsinline><source src="" type="video/mp4"></video><div class="editable-media-overlay"><span>Klik om video te wijzigen</span></div></div>
-                            <div class="p-4 flex-grow"><h4 contenteditable="true" class="font-bold text-lg dark-text-primary">Mobiele Video</h4><p contenteditable="true" class="text-sm dark-text-secondary mt-1">Beschrijf deze videoclip.</p></div>
+                            <div class="editable-media-container aspect-[9/16]"><video class="w-full h-full object-cover editable-video" poster="https://placehold.co/900x1600/a8a29e/FFFFFF?text=Vertical+Video" muted loop playsinline><source src="" type="video/mp4"></video></div>
+                            <div class="p-4 flex-grow"><h4 class="font-bold text-lg dark-text-primary">Mobiele Video</h4><p class="text-sm dark-text-secondary mt-1">Beschrijf deze videoclip.</p></div>
                         </div>
                         <div class="flex flex-col dark-card rounded-lg overflow-hidden shadow-lg">
-                            <div class="editable-media-container aspect-video"><img class="w-full h-full object-cover editable-image" src="https://placehold.co/1600x900/a8a29e/FFFFFF?text=Landscape" alt="Placeholder"><div class="editable-media-overlay"><span>Klik om afbeelding te wijzigen</span></div></div>
-                            <div class="p-4 flex-grow"><h4 contenteditable="true" class="font-bold text-lg dark-text-primary">Een Schilderachtig Uitzicht</h4><p contenteditable="true" class="text-sm dark-text-secondary mt-1">Vertel over het landschap.</p></div>
+                            <div class="editable-media-container aspect-video"><img class="w-full h-full object-cover editable-image" src="https://placehold.co/1600x900/a8a29e/FFFFFF?text=Landscape" alt="Placeholder"></div>
+                            <div class="p-4 flex-grow"><h4 class="font-bold text-lg dark-text-primary">Een Schilderachtig Uitzicht</h4><p class="text-sm dark-text-secondary mt-1">Vertel over het landschap.</p></div>
                         </div>
                         <div class="flex flex-col dark-card rounded-lg overflow-hidden shadow-lg">
-                            <div class="editable-media-container aspect-video"><img class="w-full h-full object-cover editable-image" src="https://placehold.co/1600x900/a8a29e/FFFFFF?text=Landscape" alt="Placeholder"><div class="editable-media-overlay"><span>Klik om afbeelding te wijzigen</span></div></div>
-                            <div class="p-4 flex-grow"><h4 contenteditable="true" class="font-bold text-lg dark-text-primary">Nog een foto</h4><p contenteditable="true" class="text-sm dark-text-secondary mt-1">Wat gebeurde hier?</p></div>
+                            <div class="editable-media-container aspect-video"><img class="w-full h-full object-cover editable-image" src="https://placehold.co/1600x900/a8a29e/FFFFFF?text=Landscape" alt="Placeholder"></div>
+                            <div class="p-4 flex-grow"><h4 class="font-bold text-lg dark-text-primary">Nog een foto</h4><p class="text-sm dark-text-secondary mt-1">Wat gebeurde hier?</p></div>
                         </div>
                          <div class="flex flex-col dark-card rounded-lg overflow-hidden shadow-lg">
-                            <div class="editable-media-container aspect-[9/16]"><img class="w-full h-full object-cover editable-image" src="https://placehold.co/900x1600/a8a29e/FFFFFF?text=Vertical+Photo" alt="Placeholder"><div class="editable-media-overlay"><span>Klik om afbeelding te wijzigen</span></div></div>
-                            <div class="p-4 flex-grow"><h4 contenteditable="true" class="font-bold text-lg dark-text-primary">Portretfoto</h4><p contenteditable="true" class="text-sm dark-text-secondary mt-1">Het verhaal van een verticale foto.</p></div>
+                            <div class="editable-media-container aspect-[9/16]"><img class="w-full h-full object-cover editable-image" src="https://placehold.co/900x1600/a8a29e/FFFFFF?text=Vertical+Photo" alt="Placeholder"></div>
+                            <div class="p-4 flex-grow"><h4 class="font-bold text-lg dark-text-primary">Portretfoto</h4><p class="text-sm dark-text-secondary mt-1">Het verhaal van een verticale foto.</p></div>
                         </div>
                         <div class="md:col-span-2 flex flex-col dark-card rounded-lg overflow-hidden shadow-lg">
-                             <div class="editable-media-container aspect-video"><img class="w-full h-full object-cover editable-image" src="https://placehold.co/1600x900/a8a29e/FFFFFF?text=Wide+Landscape" alt="Placeholder"><div class="editable-media-overlay"><span>Klik om afbeelding te wijzigen</span></div></div>
-                            <div class="p-4 flex-grow"><h4 contenteditable="true" class="font-bold text-lg dark-text-primary">Een Breed Panorama</h4><p contenteditable="true" class="text-sm dark-text-secondary mt-1">Deze brede opname legde de hele scène vast. Dit is wat er aan de hand was.</p></div>
+                             <div class="editable-media-container aspect-video"><img class="w-full h-full object-cover editable-image" src="https://placehold.co/1600x900/a8a29e/FFFFFF?text=Wide+Landscape" alt="Placeholder"></div>
+                            <div class="p-4 flex-grow"><h4 class="font-bold text-lg dark-text-primary">Een Breed Panorama</h4><p class="text-sm dark-text-secondary mt-1">Deze brede opname legde de hele scène vast. Dit is wat er aan de hand was.</p></div>
                         </div>
                     </div>
                 </section>
 
                 <section class="mb-12">
-                    <h3 contenteditable="true" class="text-3xl font-bold dark-text-primary mb-6">Ons Verhaal</h3>
-                    <div contenteditable="true" class="prose max-w-none dark-text-secondary leading-relaxed text-lg story-content">
+                    <h3 class="text-3xl font-bold dark-text-primary mb-6">Ons Verhaal</h3>
+                    <div class="prose max-w-none dark-text-secondary leading-relaxed text-lg story-content">
                         <p>Hier komt je gedetailleerde verhaal van de dag. Klik hier om te beginnen met typen en deze plaatshoudertekst te vervangen. Beschrijf de plaatsen die je hebt bezocht, het eten dat je hebt geproefd en de mensen die je hebt ontmoet. Je kunt zoveel alinea's toevoegen als je nodig hebt om alle herinneringen vast te leggen.</p>
                         <p>Je zou bijvoorbeeld kunnen vertellen over de ochtendrit, de middagwandeling en de avondmaaltijd. Wees beschrijvend en neem je lezers mee op reis!</p>
                     </div>
                 </section>
 
                 <section class="mb-12 dark-card p-8 rounded-lg shadow-lg border-l-4 border-lime-500">
-                     <h3 contenteditable="true" class="text-3xl font-bold dark-text-primary mb-6">Hoogtepunten & Hapjes</h3>
-                     <div contenteditable="true" class="prose max-w-none dark-text-secondary leading-relaxed text-lg highlights-content">
+                     <h3 class="text-3xl font-bold dark-text-primary mb-6">Hoogtepunten & Hapjes</h3>
+                     <div class="prose max-w-none dark-text-secondary leading-relaxed text-lg highlights-content">
                         <ul>
                             <li>Het proeven van de beroemde Bled-roomtaart ('kremšnita').</li>
                             <li>Het luiden van de wensbel op het eiland van Bled.</li>
@@ -270,35 +245,34 @@
             <main class="container mx-auto px-6 py-12">
                 <header class="text-center mb-12">
                     <h2 class="text-6xl font-bold dark-text-primary">Onze Geweldige Sponsors</h2>
-                    <p contenteditable="true" class="text-lg dark-text-secondary mt-4 max-w-3xl mx-auto">We zijn onze sponsors ongelooflijk dankbaar voor hun steun, die deze reis mogelijk maakt. Neem alstublieft een moment om ze te bekijken!</p>
+                    <p class="text-lg dark-text-secondary mt-4 max-w-3xl mx-auto">We zijn onze sponsors ongelooflijk dankbaar voor hun steun, die deze reis mogelijk maakt. Neem alstublieft een moment om ze te bekijken!</p>
                 </header>
 
                 <div class="space-y-12">
                     <!-- Sponsor Card 1: Azuriet Reizen -->
                     <div id="azuriet-sponsor" class="dark-card rounded-lg shadow-lg overflow-hidden grid grid-cols-1 md:grid-cols-3">
                         <div class="md:col-span-1 editable-media-container aspect-square">
-                            <img class="w-full h-full object-contain p-4 editable-image" src="https://placehold.co/600x600/ffffff/111827?text=Azuriet+Reizen" alt="Azuriet Reizen Logo">
-                            <div class="editable-media-overlay"><span>Klik om logo te wijzigen</span></div>
+                            <img class="w-full h-full object-contain p-4 editable-image" src="azurietlogo.webp" alt="Azuriet Reizen Logo">
                         </div>
                         <div class="md:col-span-2 p-6 flex flex-col justify-center">
-                            <h3 contenteditable="true" class="text-3xl font-bold dark-text-primary">Azuriet Reizen</h3>
-                            <p contenteditable="true" class="mt-2 dark-text-secondary">Met de hulp van Nathalie van Azuriet Reizen werd onze impulsieve ‘wijn-run’ omgetoverd tot een onvergetelijke reis.</p>
+                            <h3 class="text-3xl font-bold dark-text-primary">Azuriet Reizen</h3>
+                            <p class="mt-2 dark-text-secondary">Met de hulp van Nathalie van Azuriet Reizen werd onze impulsieve ‘wijn-run’ omgetoverd tot een onvergetelijke reis.</p>
                             <div class="mt-6 space-y-4">
                                 <a href="https://www.azuriet.be/home" target="_blank" class="flex items-center text-amber-400 hover:text-amber-300">
                                     <svg class="h-5 w-5 mr-3 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A11.953 11.953 0 0012 16.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 003 12c0-.778.099-1.533.284-2.253" /></svg>
-                                    <span contenteditable="true">www.azuriet.be</span>
+                                    <span>www.azuriet.be</span>
                                 </a>
                                 <div class="flex items-center">
                                     <svg class="h-5 w-5 mr-3 text-gray-400 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" /></svg>
-                                    <span contenteditable="true">info@azuriet.be</span>
+                                    <span>info@azuriet.be</span>
                                 </div>
                                 <div class="flex items-center">
                                     <svg class="h-5 w-5 mr-3 text-gray-400 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 6.75z" /></svg>
-                                    <span contenteditable="true">+32(0)59 51 49 51</span>
+                                    <span>+32(0)59 51 49 51</span>
                                 </div>
                                 <div class="flex items-center">
                                     <svg class="h-5 w-5 mr-3 text-gray-400 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
-                                    <span contenteditable="true">@azurietreizen</span>
+                                    <span>@azurietreizen</span>
                                 </div>
                             </div>
                         </div>
@@ -307,27 +281,26 @@
                     <div class="dark-card rounded-lg shadow-lg overflow-hidden grid grid-cols-1 md:grid-cols-3">
                         <div class="md:col-span-1 editable-media-container aspect-square">
                             <img class="w-full h-full object-contain p-4 editable-image" src="https://placehold.co/600x600/1d4ed8/FFFFFF?text=Alpen+Avonturen" alt="Sponsor Logo">
-                            <div class="editable-media-overlay"><span>Klik om logo te wijzigen</span></div>
                         </div>
                         <div class="md:col-span-2 p-6 flex flex-col justify-center">
-                            <h3 contenteditable="true" class="text-3xl font-bold dark-text-primary">Alpen Avonturen</h3>
-                            <p contenteditable="true" class="mt-2 dark-text-secondary">Dé winkel voor wandel- en outdooruitrusting, gevestigd in Bled. Zij hebben ons voorzien van onze trouwe rugzakken!</p>
+                            <h3 class="text-3xl font-bold dark-text-primary">Alpen Avonturen</h3>
+                            <p class="mt-2 dark-text-secondary">Dé winkel voor wandel- en outdooruitrusting, gevestigd in Bled. Zij hebben ons voorzien van onze trouwe rugzakken!</p>
                             <div class="mt-6 space-y-4">
                                 <a href="#" class="flex items-center text-amber-400 hover:text-amber-300">
                                     <svg class="h-5 w-5 mr-3 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A11.953 11.953 0 0012 16.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 003 12c0-.778.099-1.533.284-2.253" /></svg>
-                                    <span contenteditable="true">www.alpenavonturen.si</span>
+                                    <span>www.alpenavonturen.si</span>
                                 </a>
                                 <div class="flex items-center">
                                     <svg class="h-5 w-5 mr-3 text-gray-400 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" /></svg>
-                                    <span contenteditable="true">gear@alpenavonturen.si</span>
+                                    <span>gear@alpenavonturen.si</span>
                                 </div>
                                 <div class="flex items-center">
                                     <svg class="h-5 w-5 mr-3 text-gray-400 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 6.75z" /></svg>
-                                    <span contenteditable="true">+386 4 574 5000</span>
+                                    <span>+386 4 574 5000</span>
                                 </div>
                                 <div class="flex items-center">
                                     <svg class="h-5 w-5 mr-3 text-gray-400 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
-                                    <span contenteditable="true">@alpenavonturensi</span>
+                                    <span>@alpenavonturensi</span>
                                 </div>
                             </div>
                         </div>
@@ -336,27 +309,26 @@
                      <div class="dark-card rounded-lg shadow-lg overflow-hidden grid grid-cols-1 md:grid-cols-3">
                         <div class="md:col-span-1 editable-media-container aspect-square">
                             <img class="w-full h-full object-contain p-4 editable-image" src="https://placehold.co/600x600/be123c/FFFFFF?text=Proef+Ljubljana" alt="Sponsor Logo">
-                            <div class="editable-media-overlay"><span>Klik om logo te wijzigen</span></div>
                         </div>
                         <div class="md:col-span-2 p-6 flex flex-col justify-center">
-                            <h3 contenteditable="true" class="text-3xl font-bold dark-text-primary">Proef Ljubljana</h3>
-                            <p contenteditable="true" class="mt-2 dark-text-secondary">De beste culinaire tour in de hoofdstad! Ze hebben ons alle verborgen culinaire pareltjes van de stad laten zien.</p>
+                            <h3 class="text-3xl font-bold dark-text-primary">Proef Ljubljana</h3>
+                            <p class="mt-2 dark-text-secondary">De beste culinaire tour in de hoofdstad! Ze hebben ons alle verborgen culinaire pareltjes van de stad laten zien.</p>
                             <div class="mt-6 space-y-4">
                                 <a href="#" class="flex items-center text-amber-400 hover:text-amber-300">
                                     <svg class="h-5 w-5 mr-3 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A11.953 11.953 0 0012 16.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 003 12c0-.778.099-1.533.284-2.253" /></svg>
-                                    <span contenteditable="true">www.proefljubljana.com</span>
+                                    <span>www.proefljubljana.com</span>
                                 </a>
                                 <div class="flex items-center">
                                     <svg class="h-5 w-5 mr-3 text-gray-400 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" /></svg>
-                                    <span contenteditable="true">boekingen@proeflj.com</span>
+                                    <span>boekingen@proeflj.com</span>
                                 </div>
                                 <div class="flex items-center">
                                     <svg class="h-5 w-5 mr-3 text-gray-400 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 6.75z" /></svg>
-                                    <span contenteditable="true">+386 1 433 9999</span>
+                                    <span>+386 1 433 9999</span>
                                 </div>
                                 <div class="flex items-center">
                                     <svg class="h-5 w-5 mr-3 text-gray-400 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
-                                    <span contenteditable="true">@proefljubljana</span>
+                                    <span>@proefljubljana</span>
                                 </div>
                             </div>
                         </div>
@@ -407,14 +379,14 @@
                                 <svg class="h-6 w-6 text-amber-400 mr-4 mt-1 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" /></svg>
                                 <div>
                                     <h4 class="font-bold text-lg dark-text-primary">E-mail</h4>
-                                    <p contenteditable="true" class="dark-text-secondary">deblieckprive@gmail.com</p>
+                                    <p class="dark-text-secondary">deblieckprive@gmail.com</p>
                                 </div>
                             </div>
                              <div class="flex items-start">
                                 <svg class="h-6 w-6 text-amber-400 mr-4 mt-1 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 6.75z" /></svg>
                                 <div>
                                     <h4 class="font-bold text-lg dark-text-primary">Telefoon</h4>
-                                    <p contenteditable="true" class="dark-text-secondary">+32 479 30 29 72</p>
+                                    <p class="dark-text-secondary">+32 479 30 29 72</p>
                                 </div>
                             </div>
                              <div class="flex items-start">
@@ -438,11 +410,11 @@
             <div class="slovenian-accent-border mb-8"></div>
             <div class="flex flex-col md:flex-row justify-between items-center text-center md:text-left">
                 <div>
-                    <h3 class="text-xl font-bold" contenteditable="true">Sloveense Reis</h3>
-                    <p class="text-gray-400" contenteditable="true">De zonnige kant van de Alpen verkennen.</p>
+                    <h3 class="text-xl font-bold">Sloveense Reis</h3>
+                    <p class="text-gray-400">De zonnige kant van de Alpen verkennen.</p>
                 </div>
                 <div class="mt-4 md:mt-0">
-                    <p contenteditable="true">&copy; 2024 Tommy Deblieck. Alle Rechten Voorbehouden.</p>
+                    <p>&copy; 2024 Tommy Deblieck. Alle Rechten Voorbehouden.</p>
                     <p class="text-sm text-gray-500">Gemaakt met een passie voor reizen.</p>
                 </div>
             </div>
@@ -531,35 +503,6 @@
                     }
                 });
             });
-
-            // Media editing logic
-            function setupMediaEditing() {
-                const mediaItems = document.querySelectorAll('.editable-media-container');
-                mediaItems.forEach(container => {
-                    container.addEventListener('click', (e) => {
-                        if (e.target.closest('[contenteditable="true"]')) {
-                            return;
-                        }
-
-                        const img = container.querySelector('.editable-image');
-                        const video = container.querySelector('.editable-video');
-
-                        if (img) {
-                            const newImageUrl = prompt('Please enter the new image URL:', img.src);
-                            if (newImageUrl) img.src = newImageUrl;
-                        } else if (video) {
-                            const newVideoUrl = prompt('Please enter the new video URL:');
-                            if (newVideoUrl) {
-                                video.querySelector('source').src = newVideoUrl;
-                                video.load();
-                                video.poster = '';
-                            }
-                        }
-                    });
-                });
-            }
-            
-            setupMediaEditing();
         });
     </script>
 </body>
