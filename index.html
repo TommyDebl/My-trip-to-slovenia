@@ -96,7 +96,7 @@
             opacity: 1;
         }
 
-        /* --- NEW: Responsive Timeline Styles --- */
+        /* --- Responsive Timeline Styles --- */
         /* Mobile First: Vertical Timeline */
         .timeline-list {
             position: relative;
@@ -131,17 +131,13 @@
         .timeline-point-text {
             padding-left: 2rem;
             padding-top: 0.5rem;
-            padding-bottom: 3rem; /* Space for connector text */
+            padding-bottom: 1rem;
         }
         .timeline-item:last-child .timeline-point-text {
             padding-bottom: 0.5rem;
         }
         .timeline-connector-text {
-            position: absolute;
-            left: 2rem;
-            top: 3.5rem; 
-            color: #f59e0b; /* amber-500 */
-            font-size: 0.875rem;
+            display: none; /* Hidden on mobile by default */
         }
 
         /* Desktop: Horizontal Timeline */
@@ -158,8 +154,9 @@
             .timeline-list::before { display: none; }
             .timeline-item {
                 flex: 1;
-                padding-top: 4rem; 
-                padding-bottom: 4rem;
+                padding-top: 5rem; 
+                padding-bottom: 5rem;
+                position: relative;
             }
             .timeline-point-circle {
                 top: 50%;
@@ -172,21 +169,15 @@
                 left: 50%;
                 width: max-content;
                 transform: translateX(-50%);
+                text-align: center;
             }
+            /* Text for items BELOW the line (1st, 3rd, etc.) */
             .timeline-item:nth-child(odd) .timeline-point-text {
-                bottom: calc(50% + 2rem);
-            }
-            .timeline-item:nth-child(even) .timeline-point-text {
                 top: calc(50% + 2rem);
             }
-            .timeline-connector-text {
-                position: absolute;
-                bottom: 50%;
-                left: 100%;
-                top: auto;
-                transform: translate(-50%, 1.25rem);
-                background: #1f2937; /* dark-card bg */
-                padding: 0 0.5rem;
+            /* Text for items ABOVE the line (2nd, 4th, etc.) */
+            .timeline-item:nth-child(even) .timeline-point-text {
+                bottom: calc(50% + 2rem);
             }
             .timeline-item:last-child .timeline-connector-text {
                 display: none;
@@ -693,23 +684,21 @@
                             const item = document.createElement('li');
                             item.className = 'timeline-item';
 
-                            let circleColor = 'bg-cyan-400';
-                            if (point.type === 'start') circleColor = 'bg-green-400';
-                            if (point.type === 'end') circleColor = 'bg-red-400';
+                            let circleColor = 'border-cyan-400';
+                            if (point.type === 'start') circleColor = 'border-green-400';
+                            if (point.type === 'end') circleColor = 'border-red-400';
 
-                            let connectorHtml = '';
-                            const isLast = index === dayInfo.route.points.length - 1;
-                            if (!isLast) {
-                                const nextPoint = dayInfo.route.points[index + 1];
-                                connectorHtml = `<div class="timeline-connector-text">${nextPoint.distance} &bull; ${nextPoint.time}</div>`;
+                            let travelInfoHtml = '';
+                            if (point.type !== 'start') {
+                                travelInfoHtml = `<p class="text-sm text-amber-400">${point.distance} &bull; ${point.time}</p>`;
                             }
                             
                             item.innerHTML = `
                                 <div class="timeline-point-circle ${circleColor}"></div>
                                 <div class="timeline-point-text">
                                     <p class="font-bold text-lg dark-text-primary">${point.name}</p>
+                                    ${travelInfoHtml}
                                 </div>
-                                ${connectorHtml}
                             `;
                             list.appendChild(item);
                         });
