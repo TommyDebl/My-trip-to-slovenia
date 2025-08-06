@@ -78,7 +78,7 @@
             border-color: #4b5563; /* gray-600 */
             color: #f3f4f6; /* gray-100 */
         }
-        /* --- NEW: Scroll Fade Effect --- */
+        /* Scroll Fade Effect */
         body::after {
             content: '';
             position: fixed;
@@ -95,34 +95,123 @@
         body.show-scroll-fade::after {
             opacity: 1;
         }
+
+        /* --- NEW: Responsive Timeline Styles --- */
+        /* Mobile First: Vertical Timeline */
+        .timeline-list {
+            position: relative;
+            padding-left: 1.5rem; 
+        }
+        .timeline-list::before { /* The main vertical line */
+            content: '';
+            position: absolute;
+            top: 0.75rem;
+            bottom: 0.75rem;
+            left: 10px; /* Aligns with the center of the 20px circle */
+            width: 2px;
+            background-color: #4b5563; /* gray-600 */
+        }
+        .timeline-item {
+            position: relative;
+        }
+        .timeline-item:last-child {
+            padding-bottom: 0;
+        }
+        .timeline-point-circle {
+            position: absolute;
+            left: 0;
+            top: 0.75rem;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            border-radius: 9999px;
+            background-color: #1f2937;
+            border: 2px solid #9ca3af;
+        }
+        .timeline-point-text {
+            padding-left: 2rem;
+            padding-top: 0.5rem;
+            padding-bottom: 3rem; /* Space for connector text */
+        }
+        .timeline-item:last-child .timeline-point-text {
+            padding-bottom: 0.5rem;
+        }
+        .timeline-connector-text {
+            position: absolute;
+            left: 2rem;
+            top: 3.5rem; 
+            color: #f59e0b; /* amber-500 */
+            font-size: 0.875rem;
+        }
+
+        /* Desktop: Horizontal Timeline */
+        @media (min-width: 768px) {
+            .timeline-list {
+                padding-left: 0;
+                display: flex;
+                justify-content: space-between;
+                background-image: linear-gradient(to right, #4b5563, #4b5563);
+                background-size: 100% 2px;
+                background-repeat: no-repeat;
+                background-position: 0 50%;
+            }
+            .timeline-list::before { display: none; }
+            .timeline-item {
+                flex: 1;
+                padding-top: 4rem; 
+                padding-bottom: 4rem;
+            }
+            .timeline-point-circle {
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+            .timeline-point-text {
+                padding: 0;
+                position: absolute;
+                left: 50%;
+                width: max-content;
+                transform: translateX(-50%);
+            }
+            .timeline-item:nth-child(odd) .timeline-point-text {
+                bottom: calc(50% + 2rem);
+            }
+            .timeline-item:nth-child(even) .timeline-point-text {
+                top: calc(50% + 2rem);
+            }
+            .timeline-connector-text {
+                position: absolute;
+                bottom: 50%;
+                left: 100%;
+                top: auto;
+                transform: translate(-50%, 1.25rem);
+                background: #1f2937; /* dark-card bg */
+                padding: 0 0.5rem;
+            }
+            .timeline-item:last-child .timeline-connector-text {
+                display: none;
+            }
+        }
     </style>
 </head>
 <body class="bg-gray-900">
 
-    <!-- =================================================================== -->
     <!-- Header & Navigation -->
-    <!-- =================================================================== -->
     <header class="bg-gray-900/70 backdrop-blur-sm shadow-lg sticky top-0 z-50">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <div class="text-2xl font-bold text-white">Wijntrip door Slovenië</div>
-            
-            <!-- Desktop Menu -->
             <nav class="hidden md:flex space-x-1">
                 <a href="#" class="nav-link text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium" data-target="home-page">Home</a>
                 <a href="#" class="nav-link text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium" data-target="home-page" data-scroll-to="#journey">De Reis</a>
                 <a href="#" class="nav-link text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium" data-target="sponsors-page">Sponsors</a>
                 <a href="#" class="nav-link text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium" data-target="contact-page">Contact</a>
             </nav>
-
-            <!-- Hamburger Button -->
             <div class="md:hidden">
                 <button id="hamburger-button" class="text-white focus:outline-none">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
                 </button>
             </div>
         </div>
-
-        <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden bg-gray-900/90">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                 <a href="#" class="nav-link text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium" data-target="home-page">Home</a>
@@ -133,31 +222,13 @@
         </div>
     </header>
 
-    <!-- =================================================================== -->
-    <!-- Main Content Area -->
-    <!-- =================================================================== -->
+    <!-- Main Content -->
     <div id="main-content">
-
-        <!-- =================================================================== -->
         <!-- Home Page -->
-        <!-- =================================================================== -->
         <div id="home-page" class="page active">
-            
-            <!-- Video Hero Section -->
             <section class="relative video-hero text-center overflow-hidden">
-                <!-- Layer 1: Blurred Background Video -->
-                <video autoplay loop muted playsinline class="absolute top-0 left-0 w-full h-full object-cover" style="filter: blur(20px); transform: scale(1.1); z-index: 10;">
-                    <source src="Intro.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-                
-                <!-- Layer 2: Main Video -->
-                <video autoplay loop muted playsinline class="absolute top-0 left-0 w-full h-full object-contain z-20" poster="https://placehold.co/1920x1080/44403c/FFFFFF?text=Your+Slovenian+Adventure+Video">
-                    <source src="Intro.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-            
-                <!-- Layer 3: Overlay and Title -->
+                <video autoplay loop muted playsinline class="absolute top-0 left-0 w-full h-full object-cover" style="filter: blur(20px); transform: scale(1.1); z-index: 10;"><source src="Intro.mp4" type="video/mp4"></video>
+                <video autoplay loop muted playsinline class="absolute top-0 left-0 w-full h-full object-contain z-20" poster="https://placehold.co/1920x1080/44403c/FFFFFF?text=Your+Slovenian+Adventure+Video"><source src="Intro.mp4" type="video/mp4"></video>
                 <div class="absolute top-0 left-0 w-full h-full flex items-start justify-center pt-12 px-6 bg-black/30 z-30">
                     <div class="w-full">
                         <h1 class="text-4xl md:text-6xl font-bold mb-4 text-white">Proeven van Slovenië</h1>
@@ -165,8 +236,6 @@
                     </div>
                 </div>
             </section>
-
-            <!-- Introduction Text Section -->
             <section class="dark-section-alt py-16">
                 <div class="container mx-auto px-6">
                     <h2 class="text-4xl font-bold text-center dark-text-primary mb-8">Van Wijn-missie tot Droom-roadtrip:<br>Slovenië in een Cabrio!</h2>
@@ -175,8 +244,6 @@
                     </div>
                 </div>
             </section>
-
-            <!-- Links to Days Section -->
             <section id="journey" class="py-20 dark-section">
                 <div class="container mx-auto px-6">
                     <h2 class="text-4xl font-bold text-center dark-text-primary mb-12">Volg Onze Reis</h2>
@@ -192,25 +259,20 @@
                 </div>
             </section>
         </div>
-        <!-- End Home Page -->
 
-        <!-- =================================================================== -->
         <!-- Day Page Template -->
-        <!-- =================================================================== -->
         <template id="day-page-template">
             <main class="container mx-auto px-6 py-12">
                 <header class="text-center mb-12">
                     <p class="text-lg dark-text-secondary day-meta">Dag X | Categorie</p>
                     <h2 class="text-6xl font-bold mt-2 day-title">Titel komt hier</h2>
                 </header>
-
-                <!-- Route Details Section -->
-                <section class="route-details-section hidden mb-12 dark-card p-8 rounded-lg shadow-lg overflow-x-auto">
-                    <h3 class="text-3xl font-bold dark-text-primary mb-8">Route Tijdlijn</h3>
-                    <div class="route-timeline-container min-w-[700px]">
+                <section class="route-details-section hidden mb-12 dark-card p-8 rounded-lg shadow-lg">
+                    <h3 class="text-3xl font-bold dark-text-primary mb-8 text-center">Route Tijdlijn</h3>
+                    <div class="route-timeline-container overflow-x-auto pb-4">
                         <!-- JS will populate this area -->
                     </div>
-                     <div class="mt-8 flex justify-around text-center">
+                     <div class="mt-8 flex justify-around text-center border-t border-gray-700 pt-6">
                         <div>
                             <h4 class="font-bold text-lg dark-text-primary">Totale Afstand</h4>
                             <p class="dark-text-secondary route-total-distance">0 km</p>
@@ -221,13 +283,9 @@
                         </div>
                     </div>
                 </section>
-                
-                <!-- Gallery Section -->
                 <section class="mb-12">
                     <h3 class="text-3xl font-bold dark-text-primary mb-6">Galerij</h3>
                     <div class="grid grid-cols-2 md:grid-cols-4 auto-rows-fr gap-4">
-                        
-                        <!-- Gallery Item: Large Square Image -->
                         <div class="md:col-span-2 md:row-span-2 flex flex-col dark-card rounded-lg overflow-hidden shadow-lg">
                             <div class="editable-media-container aspect-square"><img class="w-full h-full object-cover editable-image gallery-large-square" src="https://placehold.co/1200x1200/a8a29e/FFFFFF?text=Large+Square" alt="Placeholder"></div>
                             <div class="p-4 flex-grow"><h4 class="font-bold text-lg dark-text-primary">Een Uitgelicht Moment</h4><p class="text-sm dark-text-secondary mt-1">Voeg hier een meer gedetailleerde beschrijving toe voor je belangrijkste foto van de dag.</p>
@@ -237,8 +295,6 @@
                                 </div>
                             </div>
                         </div>
-
-                        <!-- Gallery Item: Vertical Video -->
                         <div class="flex flex-col dark-card rounded-lg overflow-hidden shadow-lg">
                             <div class="editable-media-container aspect-[9/16]"><video class="w-full h-full object-cover editable-video gallery-vert-video" poster="https://placehold.co/900x1600/a8a29e/FFFFFF?text=Vertical+Video" muted loop playsinline><source src="" type="video/mp4"></video></div>
                             <div class="p-4 flex-grow"><h4 class="font-bold text-lg dark-text-primary">Mobiele Video</h4><p class="text-sm dark-text-secondary mt-1">Beschrijf deze videoclip.</p>
@@ -248,8 +304,6 @@
                                 </div>
                             </div>
                         </div>
-
-                        <!-- Gallery Item: Landscape Image -->
                         <div class="flex flex-col dark-card rounded-lg overflow-hidden shadow-lg">
                             <div class="editable-media-container aspect-video"><img class="w-full h-full object-cover editable-image gallery-landscape-1" src="https://placehold.co/1600x900/a8a29e/FFFFFF?text=Landscape" alt="Placeholder"></div>
                             <div class="p-4 flex-grow"><h4 class="font-bold text-lg dark-text-primary">Een Schilderachtig Uitzicht</h4><p class="text-sm dark-text-secondary mt-1">Vertel over het landschap.</p>
@@ -259,8 +313,6 @@
                                 </div>
                             </div>
                         </div>
-
-                        <!-- Gallery Item: Landscape Image -->
                         <div class="flex flex-col dark-card rounded-lg overflow-hidden shadow-lg">
                             <div class="editable-media-container aspect-video"><img class="w-full h-full object-cover editable-image gallery-landscape-2" src="https://placehold.co/1600x900/a8a29e/FFFFFF?text=Landscape" alt="Placeholder"></div>
                             <div class="p-4 flex-grow"><h4 class="font-bold text-lg dark-text-primary">Nog een foto</h4><p class="text-sm dark-text-secondary mt-1">Wat gebeurde hier?</p>
@@ -270,9 +322,7 @@
                                 </div>
                             </div>
                         </div>
-
-                        <!-- Gallery Item: Vertical Image -->
-                         <div class="flex flex-col dark-card rounded-lg overflow-hidden shadow-lg">
+                        <div class="flex flex-col dark-card rounded-lg overflow-hidden shadow-lg">
                             <div class="editable-media-container aspect-[9/16]"><img class="w-full h-full object-cover editable-image gallery-vert-image" src="https://placehold.co/900x1600/a8a29e/FFFFFF?text=Vertical+Photo" alt="Placeholder"></div>
                             <div class="p-4 flex-grow"><h4 class="font-bold text-lg dark-text-primary">Portretfoto</h4><p class="text-sm dark-text-secondary mt-1">Het verhaal van een verticale foto.</p>
                                 <div class="mt-2 flex space-x-2">
@@ -281,8 +331,6 @@
                                 </div>
                             </div>
                         </div>
-
-                        <!-- Gallery Item: Wide Landscape Image -->
                         <div class="md:col-span-2 flex flex-col dark-card rounded-lg overflow-hidden shadow-lg">
                              <div class="editable-media-container aspect-video"><img class="w-full h-full object-cover editable-image gallery-wide-landscape" src="https://placehold.co/1600x900/a8a29e/FFFFFF?text=Wide+Landscape" alt="Placeholder"></div>
                             <div class="p-4 flex-grow"><h4 class="font-bold text-lg dark-text-primary">Een Breed Panorama</h4><p class="text-sm dark-text-secondary mt-1">Deze brede opname legde de hele scène vast. Dit is wat er aan de hand was.</p>
@@ -294,33 +342,21 @@
                         </div>
                     </div>
                 </section>
-
-                <!-- Story Section -->
                 <section class="mb-12">
                     <h3 class="text-3xl font-bold dark-text-primary mb-6">Ons Verhaal</h3>
                     <div class="prose max-w-none dark-text-secondary leading-relaxed text-lg story-content">
-                        <p>Hier komt je gedetailleerde verhaal van de dag. Klik hier om te beginnen met typen en deze plaatshoudertekst te vervangen. Beschrijf de plaatsen die je hebt bezocht, het eten dat je hebt geproefd en de mensen die je hebt ontmoet. Je kunt zoveel alinea's toevoegen als je nodig hebt om alle herinneringen vast te leggen.</p>
-                        <p>Je zou bijvoorbeeld kunnen vertellen over de ochtendrit, de middagwandeling en de avondmaaltijd. Wees beschrijvend en neem je lezers mee op reis!</p>
+                        <p>Hier komt je gedetailleerde verhaal van de dag...</p>
                     </div>
                 </section>
-
-                <!-- Highlights Section -->
                 <section class="mb-12 dark-card p-8 rounded-lg shadow-lg border-l-4 border-lime-500">
                      <h3 class="text-3xl font-bold dark-text-primary mb-6">Hoogtepunten & Hapjes</h3>
                      <div class="prose max-w-none dark-text-secondary leading-relaxed text-lg highlights-content">
-                         <ul>
-                             <li>Het proeven van de beroemde Bled-roomtaart ('kremšnita').</li>
-                             <li>Het luiden van de wensbel op het eiland van Bled.</li>
-                             <li>Het vinden van een verborgen waterval op een zijpad.</li>
-                             <li>De heerlijke lokale wijn die we bij het avondeten probeerden.</li>
-                         </ul>
+                         <ul><li>Het proeven van de beroemde Bled-roomtaart.</li></ul>
                      </div>
                 </section>
             </main>
         </template>
-        <!-- End Day Page Template -->
         
-        <!-- Day Page Containers -->
         <div id="day1-page" class="page"></div>
         <div id="day2-page" class="page"></div>
         <div id="day3-page" class="page"></div>
@@ -329,116 +365,25 @@
         <div id="day6-page" class="page"></div>
         <div id="day7-page" class="page"></div>
 
-        <!-- =================================================================== -->
         <!-- Sponsors Page -->
-        <!-- =================================================================== -->
         <div id="sponsors-page" class="page">
-            <main class="container mx-auto px-6 py-12">
+             <main class="container mx-auto px-6 py-12">
                 <header class="text-center mb-12">
                     <h2 class="text-6xl font-bold dark-text-primary">Onze Geweldige Sponsors</h2>
                     <p class="text-lg dark-text-secondary mt-4 max-w-3xl mx-auto">We zijn onze sponsors ongelooflijk dankbaar voor hun steun, die deze reis mogelijk maakt. Neem alstublieft een moment om ze te bekijken!</p>
                 </header>
-
                 <div class="space-y-12">
-                    <!-- Sponsor Card 1: Azuriet Reizen -->
-                    <div id="azuriet-sponsor" class="dark-card rounded-lg shadow-lg overflow-hidden grid grid-cols-1 md:grid-cols-3">
-                        <div class="md:col-span-1 editable-media-container aspect-square">
-                            <img class="w-full h-full object-contain p-4 editable-image" src="azurietlogo.webp" alt="Azuriet Reizen Logo">
-                        </div>
-                        <div class="md:col-span-2 p-6 flex flex-col justify-center">
-                            <h3 class="text-3xl font-bold dark-text-primary">Azuriet Reizen</h3>
-                            <p class="mt-2 dark-text-secondary">Met de hulp van Nathalie van Azuriet Reizen werd onze impulsieve ‘wijn-run’ omgetoverd tot een onvergetelijke reis.</p>
-                            <div class="mt-6 space-y-4">
-                                <a href="https://www.azuriet.be/home" target="_blank" class="flex items-center text-amber-400 hover:text-amber-300">
-                                    <svg class="h-5 w-5 mr-3 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A11.953 11.953 0 0012 16.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 003 12c0-.778.099-1.533.284-2.253" /></svg>
-                                    <span>www.azuriet.be</span>
-                                </a>
-                                <div class="flex items-center">
-                                    <svg class="h-5 w-5 mr-3 text-gray-400 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" /></svg>
-                                    <span>info@azuriet.be</span>
-                                </div>
-                                <div class="flex items-center">
-                                    <svg class="h-5 w-5 mr-3 text-gray-400 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 6.75z" /></svg>
-                                    <span>+32(0)59 51 49 51</span>
-                                </div>
-                                <div class="flex items-center">
-                                    <svg class="h-5 w-5 mr-3 text-gray-400 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
-                                    <span>@azurietreizen</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Sponsor Card 2 -->
-                    <div class="dark-card rounded-lg shadow-lg overflow-hidden grid grid-cols-1 md:grid-cols-3">
-                        <div class="md:col-span-1 editable-media-container aspect-square">
-                            <img class="w-full h-full object-contain p-4 editable-image" src="https://placehold.co/600x600/1d4ed8/FFFFFF?text=Alpen+Avonturen" alt="Sponsor Logo">
-                        </div>
-                        <div class="md:col-span-2 p-6 flex flex-col justify-center">
-                            <h3 class="text-3xl font-bold dark-text-primary">Alpen Avonturen</h3>
-                            <p class="mt-2 dark-text-secondary">Dé winkel voor wandel- en outdooruitrusting, gevestigd in Bled. Zij hebben ons voorzien van onze trouwe rugzakken!</p>
-                            <div class="mt-6 space-y-4">
-                                <a href="#" class="flex items-center text-amber-400 hover:text-amber-300">
-                                    <svg class="h-5 w-5 mr-3 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A11.953 11.953 0 0012 16.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 003 12c0-.778.099-1.533.284-2.253" /></svg>
-                                    <span>www.alpenavonturen.si</span>
-                                </a>
-                                <div class="flex items-center">
-                                    <svg class="h-5 w-5 mr-3 text-gray-400 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" /></svg>
-                                    <span>gear@alpenavonturen.si</span>
-                                </div>
-                                <div class="flex items-center">
-                                    <svg class="h-5 w-5 mr-3 text-gray-400 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 6.75z" /></svg>
-                                    <span>+386 4 574 5000</span>
-                                </div>
-                                <div class="flex items-center">
-                                    <svg class="h-5 w-5 mr-3 text-gray-400 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
-                                    <span>@alpenavonturensi</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Sponsor Card 3 -->
-                     <div class="dark-card rounded-lg shadow-lg overflow-hidden grid grid-cols-1 md:grid-cols-3">
-                        <div class="md:col-span-1 editable-media-container aspect-square">
-                            <img class="w-full h-full object-contain p-4 editable-image" src="https://placehold.co/600x600/be123c/FFFFFF?text=Proef+Ljubljana" alt="Sponsor Logo">
-                        </div>
-                        <div class="md:col-span-2 p-6 flex flex-col justify-center">
-                            <h3 class="text-3xl font-bold dark-text-primary">Proef Ljubljana</h3>
-                            <p class="mt-2 dark-text-secondary">De beste culinaire tour in de hoofdstad! Ze hebben ons alle verborgen culinaire pareltjes van de stad laten zien.</p>
-                            <div class="mt-6 space-y-4">
-                                <a href="#" class="flex items-center text-amber-400 hover:text-amber-300">
-                                    <svg class="h-5 w-5 mr-3 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A11.953 11.953 0 0012 16.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 003 12c0-.778.099-1.533.284-2.253" /></svg>
-                                    <span>www.proefljubljana.com</span>
-                                </a>
-                                <div class="flex items-center">
-                                    <svg class="h-5 w-5 mr-3 text-gray-400 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" /></svg>
-                                    <span>boekingen@proeflj.com</span>
-                                </div>
-                                <div class="flex items-center">
-                                    <svg class="h-5 w-5 mr-3 text-gray-400 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 6.75z" /></svg>
-                                    <span>+386 1 433 9999</span>
-                                </div>
-                                <div class="flex items-center">
-                                    <svg class="h-5 w-5 mr-3 text-gray-400 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
-                                    <span>@proefljubljana</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <!-- Sponsor Cards -->
                 </div>
             </main>
         </div>
-        <!-- End Sponsors Page -->
-
-        <!-- =================================================================== -->
         <!-- Contact Page -->
-        <!-- =================================================================== -->
         <div id="contact-page" class="page">
             <main class="container mx-auto px-6 py-12">
                 <header class="text-center mb-12">
                     <h2 class="text-6xl font-bold dark-text-primary">Neem Contact Op</h2>
                     <p class="text-lg dark-text-secondary mt-4">Heeft u vragen of wilt u gewoon hallo zeggen? Stuur ons een bericht!</p>
                 </header>
-
                 <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12">
                     <!-- Contact Form -->
                     <div class="dark-card p-8 rounded-lg shadow-lg">
@@ -459,14 +404,12 @@
                                 </div>
                             </div>
                             <div class="mt-6 text-right">
-                                <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-amber-600 hover:bg-amber-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500">
-                                    Verstuur Bericht
-                                </button>
+                                <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-amber-600 hover:bg-amber-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500">Verstuur Bericht</button>
                             </div>
                         </form>
                     </div>
                     <!-- Contact Details -->
-                    <div class="dark-card p-8 rounded-lg shadow-lg">
+                     <div class="dark-card p-8 rounded-lg shadow-lg">
                         <h3 class="text-3xl font-bold dark-text-primary mb-6">Onze Gegevens</h3>
                         <div class="space-y-6">
                             <div class="flex items-start">
@@ -495,13 +438,9 @@
                 </div>
             </main>
         </div>
-        <!-- End Contact Page -->
-
     </div>
 
-    <!-- =================================================================== -->
     <!-- Footer -->
-    <!-- =================================================================== -->
     <footer class="bg-gray-900/70 text-white mt-16">
         <div class="container mx-auto px-6 py-8">
             <div class="slovenian-accent-border mb-8"></div>
@@ -518,9 +457,7 @@
         </div>
     </footer>
 
-    <!-- =================================================================== -->
     <!-- JavaScript -->
-    <!-- =================================================================== -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const hamburgerButton = document.getElementById('hamburger-button');
@@ -734,10 +671,8 @@
                     const dayInfo = dayData[day];
                     
                     // Populate text content
-                    const titleEl = clone.querySelector('.day-title');
-                    titleEl.textContent = dayInfo.title;
-                    titleEl.classList.add(dayInfo.color);
-
+                    clone.querySelector('.day-title').textContent = dayInfo.title;
+                    clone.querySelector('.day-title').classList.add(dayInfo.color);
                     clone.querySelector('.day-meta').textContent = dayInfo.meta;
                     clone.querySelector('.story-content').innerHTML = dayInfo.story;
                     clone.querySelector('.highlights-content').innerHTML = dayInfo.highlights;
@@ -746,73 +681,38 @@
                     if (dayInfo.route && dayInfo.route.points) {
                         const routeSection = clone.querySelector('.route-details-section');
                         routeSection.classList.remove('hidden');
-
                         clone.querySelector('.route-total-distance').textContent = dayInfo.route.totalDistance;
                         clone.querySelector('.route-total-time').textContent = dayInfo.route.totalTime;
 
                         const timelineContainer = clone.querySelector('.route-timeline-container');
-                        timelineContainer.innerHTML = ''; // Clear placeholder
-
-                        const timelineEl = document.createElement('div');
-                        timelineEl.className = 'flex items-start w-full';
+                        const list = document.createElement('ol');
+                        list.className = 'timeline-list';
+                        timelineContainer.appendChild(list);
 
                         dayInfo.route.points.forEach((point, index) => {
-                            const isAbove = index % 2 !== 0;
-                            const isFirst = index === 0;
-                            const isLast = index === dayInfo.route.points.length - 1;
+                            const item = document.createElement('li');
+                            item.className = 'timeline-item';
 
-                            // Point Element
-                            const pointWrapper = document.createElement('div');
-                            pointWrapper.className = `flex flex-col ${isAbove ? 'justify-start' : 'justify-end'} items-center`;
-                            
-                            const textEl = document.createElement('div');
-                            textEl.className = `text-center px-2 ${isAbove ? 'mb-2' : 'mt-2'}`;
-                            textEl.innerHTML = `<p class="font-bold text-lg dark-text-primary">${point.name}</p>`;
-
-                            const lineEl = document.createElement('div');
-                            lineEl.className = 'w-px h-12 bg-gray-500';
-
-                            const circleEl = document.createElement('div');
-                            let circleColor = 'bg-cyan-400'; // Default for stops
+                            let circleColor = 'bg-cyan-400';
                             if (point.type === 'start') circleColor = 'bg-green-400';
                             if (point.type === 'end') circleColor = 'bg-red-400';
-                            circleEl.className = `w-5 h-5 rounded-full ${circleColor} border-4 border-gray-800`;
 
-                            if (isAbove) {
-                                pointWrapper.appendChild(textEl);
-                                pointWrapper.appendChild(lineEl);
-                                pointWrapper.appendChild(circleEl);
-                            } else {
-                                pointWrapper.appendChild(circleEl);
-                                pointWrapper.appendChild(lineEl);
-                                pointWrapper.appendChild(textEl);
-                            }
-                            
-                            timelineEl.appendChild(pointWrapper);
-
-                            // Connector Element
+                            let connectorHtml = '';
+                            const isLast = index === dayInfo.route.points.length - 1;
                             if (!isLast) {
                                 const nextPoint = dayInfo.route.points[index + 1];
-                                const connectorWrapper = document.createElement('div');
-                                connectorWrapper.className = 'flex-grow px-2 text-center relative';
-                                connectorWrapper.style.paddingTop = isAbove ? '84px' : '0';
-                                connectorWrapper.style.paddingBottom = isAbove ? '0' : '84px';
-
-
-                                const lineH = document.createElement('div');
-                                lineH.className = 'h-1 bg-gray-600 w-full';
-                                
-                                const textH = document.createElement('div');
-                                textH.className = 'absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 px-2 bg-gray-800';
-                                textH.innerHTML = `<p class="text-sm text-amber-400 whitespace-nowrap">${nextPoint.distance} &bull; ${nextPoint.time}</p>`;
-
-                                connectorWrapper.appendChild(lineH);
-                                connectorWrapper.appendChild(textH);
-                                timelineEl.appendChild(connectorWrapper);
+                                connectorHtml = `<div class="timeline-connector-text">${nextPoint.distance} &bull; ${nextPoint.time}</div>`;
                             }
+                            
+                            item.innerHTML = `
+                                <div class="timeline-point-circle ${circleColor}"></div>
+                                <div class="timeline-point-text">
+                                    <p class="font-bold text-lg dark-text-primary">${point.name}</p>
+                                </div>
+                                ${connectorHtml}
+                            `;
+                            list.appendChild(item);
                         });
-
-                        timelineContainer.appendChild(timelineEl);
                     }
 
 
@@ -890,17 +790,15 @@
                         }, 100);
                     }
 
-                    // Close mobile menu on link click
                     if (!mobileMenu.classList.contains('hidden')) {
                         mobileMenu.classList.add('hidden');
                     }
                 });
             });
 
-            // --- NEW: Scroll Fade Logic ---
+            // --- Scroll Fade Logic ---
             const handleScrollFade = () => {
                 const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
-                // Show fade if content is scrollable and user is not at the bottom
                 if (scrollHeight > clientHeight && scrollTop + clientHeight < scrollHeight - 20) {
                     document.body.classList.add('show-scroll-fade');
                 } else {
@@ -908,10 +806,8 @@
                 }
             };
 
-            // Check on load and on scroll
             handleScrollFade();
             window.addEventListener('scroll', handleScrollFade);
-            // Also check when switching pages
             new MutationObserver(handleScrollFade).observe(document.getElementById('main-content'), {
                 childList: true, subtree: true
             });
