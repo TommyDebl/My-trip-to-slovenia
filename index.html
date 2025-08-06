@@ -82,7 +82,9 @@
 </head>
 <body class="bg-gray-900">
 
-    <!-- Header -->
+    <!-- =================================================================== -->
+    <!-- Header & Navigation -->
+    <!-- =================================================================== -->
     <header class="bg-gray-900/70 backdrop-blur-sm shadow-lg sticky top-0 z-50">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <div class="text-2xl font-bold text-white">Wijntrip door Slovenië</div>
@@ -114,11 +116,16 @@
         </div>
     </header>
 
-    <!-- Main Container -->
+    <!-- =================================================================== -->
+    <!-- Main Content Area -->
+    <!-- =================================================================== -->
     <div id="main-content">
 
+        <!-- =================================================================== -->
         <!-- Home Page -->
+        <!-- =================================================================== -->
         <div id="home-page" class="page active">
+            
             <!-- Video Hero Section -->
             <section class="relative video-hero text-center overflow-hidden">
                 <!-- Layer 1: Blurred Background Video -->
@@ -168,8 +175,11 @@
                 </div>
             </section>
         </div>
+        <!-- End Home Page -->
 
-        <!-- Templated Day Pages -->
+        <!-- =================================================================== -->
+        <!-- Day Page Template -->
+        <!-- =================================================================== -->
         <template id="day-page-template">
             <main class="container mx-auto px-6 py-12">
                 <header class="text-center mb-12">
@@ -177,11 +187,14 @@
                     <h2 class="text-6xl font-bold mt-2 day-title">Titel komt hier</h2>
                 </header>
                 
+                <!-- Gallery Section -->
                 <section class="mb-12">
                     <h3 class="text-3xl font-bold dark-text-primary mb-6">Galerij</h3>
                     <div class="grid grid-cols-2 md:grid-cols-4 auto-rows-fr gap-4">
+                        
+                        <!-- Gallery Item: Large Square Image -->
                         <div class="md:col-span-2 md:row-span-2 flex flex-col dark-card rounded-lg overflow-hidden shadow-lg">
-                            <div class="editable-media-container aspect-square"><img class="w-full h-full object-cover editable-image" src="https://placehold.co/1200x1200/a8a29e/FFFFFF?text=Large+Square" alt="Placeholder"></div>
+                            <div class="editable-media-container aspect-square"><img class="w-full h-full object-cover editable-image gallery-large-square" src="https://placehold.co/1200x1200/a8a29e/FFFFFF?text=Large+Square" alt="Placeholder"></div>
                             <div class="p-4 flex-grow"><h4 class="font-bold text-lg dark-text-primary">Een Uitgelicht Moment</h4><p class="text-sm dark-text-secondary mt-1">Voeg hier een meer gedetailleerde beschrijving toe voor je belangrijkste foto van de dag.</p>
                                 <div class="mt-2 flex space-x-2">
                                     <a href="#" class="share-btn-fb" title="Share on Facebook"><svg class="w-5 h-5 text-gray-400 hover:text-white" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg></a>
@@ -189,8 +202,10 @@
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Gallery Item: Vertical Video -->
                         <div class="flex flex-col dark-card rounded-lg overflow-hidden shadow-lg">
-                            <div class="editable-media-container aspect-[9/16]"><video class="w-full h-full object-cover editable-video" poster="https://placehold.co/900x1600/a8a29e/FFFFFF?text=Vertical+Video" muted loop playsinline><source src="" type="video/mp4"></video></div>
+                            <div class="editable-media-container aspect-[9/16]"><video class="w-full h-full object-cover editable-video gallery-vert-video" poster="https://placehold.co/900x1600/a8a29e/FFFFFF?text=Vertical+Video" muted loop playsinline><source src="" type="video/mp4"></video></div>
                             <div class="p-4 flex-grow"><h4 class="font-bold text-lg dark-text-primary">Mobiele Video</h4><p class="text-sm dark-text-secondary mt-1">Beschrijf deze videoclip.</p>
                                 <div class="mt-2 flex space-x-2">
                                     <a href="#" class="share-btn-fb" title="Share on Facebook"><svg class="w-5 h-5 text-gray-400 hover:text-white" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg></a>
@@ -198,8 +213,10 @@
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Gallery Item: Landscape Image -->
                         <div class="flex flex-col dark-card rounded-lg overflow-hidden shadow-lg">
-                            <div class="editable-media-container aspect-video"><img class="w-full h-full object-cover editable-image" src="https://placehold.co/1600x900/a8a29e/FFFFFF?text=Landscape" alt="Placeholder"></div>
+                            <div class="editable-media-container aspect-video"><img class="w-full h-full object-cover editable-image gallery-landscape-1" src="https://placehold.co/1600x900/a8a29e/FFFFFF?text=Landscape" alt="Placeholder"></div>
                             <div class="p-4 flex-grow"><h4 class="font-bold text-lg dark-text-primary">Een Schilderachtig Uitzicht</h4><p class="text-sm dark-text-secondary mt-1">Vertel over het landschap.</p>
                                 <div class="mt-2 flex space-x-2">
                                     <a href="#" class="share-btn-fb" title="Share on Facebook"><svg class="w-5 h-5 text-gray-400 hover:text-white" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg></a>
@@ -207,8 +224,10 @@
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Gallery Item: Landscape Image -->
                         <div class="flex flex-col dark-card rounded-lg overflow-hidden shadow-lg">
-                            <div class="editable-media-container aspect-video"><img class="w-full h-full object-cover editable-image" src="https://placehold.co/1600x900/a8a29e/FFFFFF?text=Landscape" alt="Placeholder"></div>
+                            <div class="editable-media-container aspect-video"><img class="w-full h-full object-cover editable-image gallery-landscape-2" src="https://placehold.co/1600x900/a8a29e/FFFFFF?text=Landscape" alt="Placeholder"></div>
                             <div class="p-4 flex-grow"><h4 class="font-bold text-lg dark-text-primary">Nog een foto</h4><p class="text-sm dark-text-secondary mt-1">Wat gebeurde hier?</p>
                                 <div class="mt-2 flex space-x-2">
                                     <a href="#" class="share-btn-fb" title="Share on Facebook"><svg class="w-5 h-5 text-gray-400 hover:text-white" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg></a>
@@ -216,8 +235,10 @@
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Gallery Item: Vertical Image -->
                          <div class="flex flex-col dark-card rounded-lg overflow-hidden shadow-lg">
-                            <div class="editable-media-container aspect-[9/16]"><img class="w-full h-full object-cover editable-image" src="https://placehold.co/900x1600/a8a29e/FFFFFF?text=Vertical+Photo" alt="Placeholder"></div>
+                            <div class="editable-media-container aspect-[9/16]"><img class="w-full h-full object-cover editable-image gallery-vert-image" src="https://placehold.co/900x1600/a8a29e/FFFFFF?text=Vertical+Photo" alt="Placeholder"></div>
                             <div class="p-4 flex-grow"><h4 class="font-bold text-lg dark-text-primary">Portretfoto</h4><p class="text-sm dark-text-secondary mt-1">Het verhaal van een verticale foto.</p>
                                 <div class="mt-2 flex space-x-2">
                                     <a href="#" class="share-btn-fb" title="Share on Facebook"><svg class="w-5 h-5 text-gray-400 hover:text-white" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg></a>
@@ -225,8 +246,10 @@
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Gallery Item: Wide Landscape Image -->
                         <div class="md:col-span-2 flex flex-col dark-card rounded-lg overflow-hidden shadow-lg">
-                             <div class="editable-media-container aspect-video"><img class="w-full h-full object-cover editable-image" src="https://placehold.co/1600x900/a8a29e/FFFFFF?text=Wide+Landscape" alt="Placeholder"></div>
+                             <div class="editable-media-container aspect-video"><img class="w-full h-full object-cover editable-image gallery-wide-landscape" src="https://placehold.co/1600x900/a8a29e/FFFFFF?text=Wide+Landscape" alt="Placeholder"></div>
                             <div class="p-4 flex-grow"><h4 class="font-bold text-lg dark-text-primary">Een Breed Panorama</h4><p class="text-sm dark-text-secondary mt-1">Deze brede opname legde de hele scène vast. Dit is wat er aan de hand was.</p>
                                 <div class="mt-2 flex space-x-2">
                                     <a href="#" class="share-btn-fb" title="Share on Facebook"><svg class="w-5 h-5 text-gray-400 hover:text-white" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg></a>
@@ -237,6 +260,7 @@
                     </div>
                 </section>
 
+                <!-- Story Section -->
                 <section class="mb-12">
                     <h3 class="text-3xl font-bold dark-text-primary mb-6">Ons Verhaal</h3>
                     <div class="prose max-w-none dark-text-secondary leading-relaxed text-lg story-content">
@@ -245,6 +269,7 @@
                     </div>
                 </section>
 
+                <!-- Highlights Section -->
                 <section class="mb-12 dark-card p-8 rounded-lg shadow-lg border-l-4 border-lime-500">
                      <h3 class="text-3xl font-bold dark-text-primary mb-6">Hoogtepunten & Hapjes</h3>
                      <div class="prose max-w-none dark-text-secondary leading-relaxed text-lg highlights-content">
@@ -258,6 +283,7 @@
                 </section>
             </main>
         </template>
+        <!-- End Day Page Template -->
         
         <!-- Day Page Containers -->
         <div id="day1-page" class="page"></div>
@@ -268,7 +294,9 @@
         <div id="day6-page" class="page"></div>
         <div id="day7-page" class="page"></div>
 
+        <!-- =================================================================== -->
         <!-- Sponsors Page -->
+        <!-- =================================================================== -->
         <div id="sponsors-page" class="page">
             <main class="container mx-auto px-6 py-12">
                 <header class="text-center mb-12">
@@ -364,8 +392,11 @@
                 </div>
             </main>
         </div>
+        <!-- End Sponsors Page -->
 
+        <!-- =================================================================== -->
         <!-- Contact Page -->
+        <!-- =================================================================== -->
         <div id="contact-page" class="page">
             <main class="container mx-auto px-6 py-12">
                 <header class="text-center mb-12">
@@ -399,7 +430,7 @@
                             </div>
                         </form>
                     </div>
-                    <!-- Credentials Section -->
+                    <!-- Contact Details -->
                     <div class="dark-card p-8 rounded-lg shadow-lg">
                         <h3 class="text-3xl font-bold dark-text-primary mb-6">Onze Gegevens</h3>
                         <div class="space-y-6">
@@ -429,10 +460,13 @@
                 </div>
             </main>
         </div>
+        <!-- End Contact Page -->
 
     </div>
 
+    <!-- =================================================================== -->
     <!-- Footer -->
+    <!-- =================================================================== -->
     <footer class="bg-gray-900/70 text-white mt-16">
         <div class="container mx-auto px-6 py-8">
             <div class="slovenian-accent-border mb-8"></div>
@@ -449,6 +483,9 @@
         </div>
     </footer>
 
+    <!-- =================================================================== -->
+    <!-- JavaScript -->
+    <!-- =================================================================== -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const hamburgerButton = document.getElementById('hamburger-button');
@@ -458,14 +495,121 @@
                 mobileMenu.classList.toggle('hidden');
             });
 
+            // --- DATA FOR EACH DAY ---
+            // Here you can add content and image URLs for each day.
             const dayData = {
-                day1: { meta: 'Dag 1 | Alpenwonderen', title: 'De sprookjesachtige charme van het meer van Bled', color: 'text-blue-400', story: '<p>Onze reis begon bij het iconische Meer van Bled... Het was de perfecte, zoete start van ons Sloveense avontuur.</p><p>Voeg hier meer details toe.</p>', highlights: '<ul><li>Het proeven van de beroemde Bled-roomtaart.</li><li>Het luiden van de wensbel.</li></ul>' },
-                day2: { meta: 'Dag 2 | Watervallen & Wildernis', title: 'Kloven en Reuzen', color: 'text-green-400', story: '<p>Vandaag stond in het teken van water. We begonnen bij de Vintgar-kloof... en voelden ons nietig te midden van de grootsheid van Triglav Nationaal Park.</p>', highlights: '<ul><li>Wandelen over de houten paden van de Vintgar-kloof.</li><li>Kanoën op het Meer van Bohinj.</li></ul>' },
-                day3: { meta: 'Dag 3 | Uitzicht op de Wijngaard', title: 'Verhalen proeven in Goriška Brda', color: 'text-red-400', story: '<p>We reden naar Goriška Brda, de gerenommeerde wijnregio van Slovenië... een eenvoudige maar diepgaande culinaire ervaring.</p>', highlights: '<ul><li>Proeven van Rebula-wijn.</li><li>Genieten van lokale prosciutto en kaas.</li></ul>' },
-                day4: { meta: 'Dag 4 | Een vleugje Venetië', title: 'Zout, Zee en Zonsondergangen in Piran', color: 'text-cyan-400', story: '<p>Van de groene heuvels naar de blauwe zee! We kwamen aan in Piran... een prachtig contrast met de Alpen.</p>', highlights: '<ul><li>De klokkentoren van Piran beklimmen.</li><li>Diner met zeevruchten aan de Adriatische zee.</li></ul>' },
-                day5: { meta: 'Dag 5 | Ondergrondse Wonderen', title: 'In de Buik van de Aarde', color: 'text-amber-400', story: '<p>Vandaag verkenden we de Karst-regio, te beginnen met de prachtige Grotten van Škocjan... De geschiedenis was fascinerend.</p>', highlights: '<ul><li>De Grotten van Škocjan verkennen.</li><li>Een bezoek aan Kasteel Predjama.</li></ul>' },
-                day6: { meta: 'Dag 6 | De Drakenstad', title: 'Het Levendige Hart van Ljubljana', color: 'text-indigo-400', story: '<p>We brachten de dag door in Ljubljana, een van Europa\'s groenste hoofdsteden... een stad gebouwd voor mensen, niet alleen voor auto\'s.</p>', highlights: '<ul><li>Wandelen langs de rivier de Ljubljanica.</li><li>Een bezoek aan het Kasteel van Ljubljana.</li></ul>' },
-                day7: { meta: 'Dag 7 | Meesterwerk van de Natuur', title: 'De Smaragdgroene Schoonheid van de Soča-vallei', color: 'text-emerald-400', story: '<p>Het laatste deel van onze reis bracht ons naar de Soča-vallei... en verbond ons diep met het land.</p>', highlights: '<ul><li>Wandelen langs de Soča-rivier.</li><li>De Kozjak-waterval ontdekken.</li></ul>' },
+                day1: { 
+                    meta: 'Dag 1 | Alpenwonderen', 
+                    title: 'De sprookjesachtige charme van het meer van Bled', 
+                    color: 'text-blue-400', 
+                    story: '<p>Onze reis begon bij het iconische Meer van Bled... Het was de perfecte, zoete start van ons Sloveense avontuur.</p><p>Voeg hier meer details toe.</p>', 
+                    highlights: '<ul><li>Het proeven van de beroemde Bled-roomtaart.</li><li>Het luiden van de wensbel.</li></ul>',
+                    gallery: {
+                        largeSquare: 'https://placehold.co/1200x1200/0284c7/FFFFFF?text=Foto+Dag+1',
+                        vertVideo: '',
+                        vertVideoPoster: 'https://placehold.co/900x1600/0284c7/FFFFFF?text=Video+Dag+1',
+                        landscape1: 'https://placehold.co/1600x900/0284c7/FFFFFF?text=Foto+Dag+1',
+                        landscape2: 'https://placehold.co/1600x900/0284c7/FFFFFF?text=Foto+Dag+1',
+                        vertImage: 'https://placehold.co/900x1600/0284c7/FFFFFF?text=Foto+Dag+1',
+                        wideLandscape: 'https://placehold.co/1600x900/0284c7/FFFFFF?text=Foto+Dag+1'
+                    }
+                },
+                day2: { 
+                    meta: 'Dag 2 | Watervallen & Wildernis', 
+                    title: 'Kloven en Reuzen', 
+                    color: 'text-green-400', 
+                    story: '<p>Vandaag stond in het teken van water. We begonnen bij de Vintgar-kloof... en voelden ons nietig te midden van de grootsheid van Triglav Nationaal Park.</p>', 
+                    highlights: '<ul><li>Wandelen over de houten paden van de Vintgar-kloof.</li><li>Kanoën op het Meer van Bohinj.</li></ul>',
+                    gallery: {
+                        largeSquare: 'https://placehold.co/1200x1200/16a34a/FFFFFF?text=Foto+Dag+2',
+                        vertVideo: '',
+                        vertVideoPoster: 'https://placehold.co/900x1600/16a34a/FFFFFF?text=Video+Dag+2',
+                        landscape1: 'https://placehold.co/1600x900/16a34a/FFFFFF?text=Foto+Dag+2',
+                        landscape2: 'https://placehold.co/1600x900/16a34a/FFFFFF?text=Foto+Dag+2',
+                        vertImage: 'https://placehold.co/900x1600/16a34a/FFFFFF?text=Foto+Dag+2',
+                        wideLandscape: 'https://placehold.co/1600x900/16a34a/FFFFFF?text=Foto+Dag+2'
+                    }
+                },
+                day3: { 
+                    meta: 'Dag 3 | Uitzicht op de Wijngaard', 
+                    title: 'Verhalen proeven in Goriška Brda', 
+                    color: 'text-red-400', 
+                    story: '<p>We reden naar Goriška Brda, de gerenommeerde wijnregio van Slovenië... een eenvoudige maar diepgaande culinaire ervaring.</p>', 
+                    highlights: '<ul><li>Proeven van Rebula-wijn.</li><li>Genieten van lokale prosciutto en kaas.</li></ul>',
+                    gallery: {
+                        largeSquare: 'https://placehold.co/1200x1200/dc2626/FFFFFF?text=Foto+Dag+3',
+                        vertVideo: '',
+                        vertVideoPoster: 'https://placehold.co/900x1600/dc2626/FFFFFF?text=Video+Dag+3',
+                        landscape1: 'https://placehold.co/1600x900/dc2626/FFFFFF?text=Foto+Dag+3',
+                        landscape2: 'https://placehold.co/1600x900/dc2626/FFFFFF?text=Foto+Dag+3',
+                        vertImage: 'https://placehold.co/900x1600/dc2626/FFFFFF?text=Foto+Dag+3',
+                        wideLandscape: 'https://placehold.co/1600x900/dc2626/FFFFFF?text=Foto+Dag+3'
+                    }
+                },
+                day4: { 
+                    meta: 'Dag 4 | Een vleugje Venetië', 
+                    title: 'Zout, Zee en Zonsondergangen in Piran', 
+                    color: 'text-cyan-400', 
+                    story: '<p>Van de groene heuvels naar de blauwe zee! We kwamen aan in Piran... een prachtig contrast met de Alpen.</p>', 
+                    highlights: '<ul><li>De klokkentoren van Piran beklimmen.</li><li>Diner met zeevruchten aan de Adriatische zee.</li></ul>',
+                    gallery: {
+                        largeSquare: 'https://placehold.co/1200x1200/0891b2/FFFFFF?text=Foto+Dag+4',
+                        vertVideo: '',
+                        vertVideoPoster: 'https://placehold.co/900x1600/0891b2/FFFFFF?text=Video+Dag+4',
+                        landscape1: 'https://placehold.co/1600x900/0891b2/FFFFFF?text=Foto+Dag+4',
+                        landscape2: 'https://placehold.co/1600x900/0891b2/FFFFFF?text=Foto+Dag+4',
+                        vertImage: 'https://placehold.co/900x1600/0891b2/FFFFFF?text=Foto+Dag+4',
+                        wideLandscape: 'https://placehold.co/1600x900/0891b2/FFFFFF?text=Foto+Dag+4'
+                    }
+                },
+                day5: { 
+                    meta: 'Dag 5 | Ondergrondse Wonderen', 
+                    title: 'In de Buik van de Aarde', 
+                    color: 'text-amber-400', 
+                    story: '<p>Vandaag verkenden we de Karst-regio, te beginnen met de prachtige Grotten van Škocjan... De geschiedenis was fascinerend.</p>', 
+                    highlights: '<ul><li>De Grotten van Škocjan verkennen.</li><li>Een bezoek aan Kasteel Predjama.</li></ul>',
+                    gallery: {
+                        largeSquare: 'https://placehold.co/1200x1200/d97706/FFFFFF?text=Foto+Dag+5',
+                        vertVideo: '',
+                        vertVideoPoster: 'https://placehold.co/900x1600/d97706/FFFFFF?text=Video+Dag+5',
+                        landscape1: 'https://placehold.co/1600x900/d97706/FFFFFF?text=Foto+Dag+5',
+                        landscape2: 'https://placehold.co/1600x900/d97706/FFFFFF?text=Foto+Dag+5',
+                        vertImage: 'https://placehold.co/900x1600/d97706/FFFFFF?text=Foto+Dag+5',
+                        wideLandscape: 'https://placehold.co/1600x900/d97706/FFFFFF?text=Foto+Dag+5'
+                    }
+                },
+                day6: { 
+                    meta: 'Dag 6 | De Drakenstad', 
+                    title: 'Het Levendige Hart van Ljubljana', 
+                    color: 'text-indigo-400', 
+                    story: '<p>We brachten de dag door in Ljubljana, een van Europa\'s groenste hoofdsteden... een stad gebouwd voor mensen, niet alleen voor auto\'s.</p>', 
+                    highlights: '<ul><li>Wandelen langs de rivier de Ljubljanica.</li><li>Een bezoek aan het Kasteel van Ljubljana.</li></ul>',
+                    gallery: {
+                        largeSquare: 'https://placehold.co/1200x1200/4f46e5/FFFFFF?text=Foto+Dag+6',
+                        vertVideo: '',
+                        vertVideoPoster: 'https://placehold.co/900x1600/4f46e5/FFFFFF?text=Video+Dag+6',
+                        landscape1: 'https://placehold.co/1600x900/4f46e5/FFFFFF?text=Foto+Dag+6',
+                        landscape2: 'https://placehold.co/1600x900/4f46e5/FFFFFF?text=Foto+Dag+6',
+                        vertImage: 'https://placehold.co/900x1600/4f46e5/FFFFFF?text=Foto+Dag+6',
+                        wideLandscape: 'https://placehold.co/1600x900/4f46e5/FFFFFF?text=Foto+Dag+6'
+                    }
+                },
+                day7: { 
+                    meta: 'Dag 7 | Meesterwerk van de Natuur', 
+                    title: 'De Smaragdgroene Schoonheid van de Soča-vallei', 
+                    color: 'text-emerald-400', 
+                    story: '<p>Het laatste deel van onze reis bracht ons naar de Soča-vallei... en verbond ons diep met het land.</p>', 
+                    highlights: '<ul><li>Wandelen langs de Soča-rivier.</li><li>De Kozjak-waterval ontdekken.</li></ul>',
+                    gallery: {
+                        largeSquare: 'https://placehold.co/1200x1200/059669/FFFFFF?text=Foto+Dag+7',
+                        vertVideo: '',
+                        vertVideoPoster: 'https://placehold.co/900x1600/059669/FFFFFF?text=Video+Dag+7',
+                        landscape1: 'https://placehold.co/1600x900/059669/FFFFFF?text=Foto+Dag+7',
+                        landscape2: 'https://placehold.co/1600x900/059669/FFFFFF?text=Foto+Dag+7',
+                        vertImage: 'https://placehold.co/900x1600/059669/FFFFFF?text=Foto+Dag+7',
+                        wideLandscape: 'https://placehold.co/1600x900/059669/FFFFFF?text=Foto+Dag+7'
+                    }
+                },
             };
 
             const template = document.getElementById('day-page-template').content;
@@ -482,12 +626,15 @@
                     });
                 }
             }
-
+            
+            // --- PAGE GENERATION LOGIC ---
+            // This loop builds each day page from the template and the data object.
             for (const day in dayData) {
                 const container = document.getElementById(`${day}-page`);
                 if (container) {
                     const clone = document.importNode(template, true);
                     
+                    // Populate text content
                     const titleEl = clone.querySelector('.day-title');
                     titleEl.textContent = dayData[day].title;
                     titleEl.classList.add(dayData[day].color);
@@ -495,6 +642,32 @@
                     clone.querySelector('.day-meta').textContent = dayData[day].meta;
                     clone.querySelector('.story-content').innerHTML = dayData[day].story;
                     clone.querySelector('.highlights-content').innerHTML = dayData[day].highlights;
+
+                    // --- NEW: Populate gallery content ---
+                    if (dayData[day].gallery) {
+                        const galleryData = dayData[day].gallery;
+                        // Helper function to set image/video sources
+                        const setMediaSource = (selector, src, isVideo = false, posterSrc = '') => {
+                            const el = clone.querySelector(selector);
+                            if (el && src) {
+                                if(isVideo) {
+                                    el.poster = posterSrc || '';
+                                    const sourceEl = el.querySelector('source');
+                                    if (sourceEl) sourceEl.src = src;
+                                } else {
+                                    el.src = src;
+                                }
+                            }
+                        };
+                        
+                        setMediaSource('.gallery-large-square', galleryData.largeSquare);
+                        setMediaSource('.gallery-vert-video', galleryData.vertVideo, true, galleryData.vertVideoPoster);
+                        setMediaSource('.gallery-landscape-1', galleryData.landscape1);
+                        setMediaSource('.gallery-landscape-2', galleryData.landscape2);
+                        setMediaSource('.gallery-vert-image', galleryData.vertImage);
+                        setMediaSource('.gallery-wide-landscape', galleryData.wideLandscape);
+                    }
+
 
                     container.appendChild(clone);
                     
