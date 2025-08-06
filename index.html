@@ -186,6 +186,24 @@
                     <p class="text-lg dark-text-secondary day-meta">Dag X | Categorie</p>
                     <h2 class="text-6xl font-bold mt-2 day-title">Titel komt hier</h2>
                 </header>
+
+                <!-- Route Details Section -->
+                <section class="route-details-section hidden mb-12 dark-card p-8 rounded-lg shadow-lg overflow-x-auto">
+                    <h3 class="text-3xl font-bold dark-text-primary mb-8">Route Tijdlijn</h3>
+                    <div class="route-timeline-container min-w-[700px]">
+                        <!-- JS will populate this area -->
+                    </div>
+                     <div class="mt-8 flex justify-around text-center">
+                        <div>
+                            <h4 class="font-bold text-lg dark-text-primary">Totale Afstand</h4>
+                            <p class="dark-text-secondary route-total-distance">0 km</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg dark-text-primary">Totale Rijtijd</h4>
+                            <p class="dark-text-secondary route-total-time">0 uur</p>
+                        </div>
+                    </div>
+                </section>
                 
                 <!-- Gallery Section -->
                 <section class="mb-12">
@@ -496,7 +514,6 @@
             });
 
             // --- DATA FOR EACH DAY ---
-            // Here you can add content and image URLs for each day.
             const dayData = {
                 day1: { 
                     meta: 'Dag 1 | Alpenwonderen', 
@@ -504,6 +521,16 @@
                     color: 'text-blue-400', 
                     story: '<p>Onze reis begon bij het iconische Meer van Bled... Het was de perfecte, zoete start van ons Sloveense avontuur.</p><p>Voeg hier meer details toe.</p>', 
                     highlights: '<ul><li>Het proeven van de beroemde Bled-roomtaart.</li><li>Het luiden van de wensbel.</li></ul>',
+                    route: {
+                        totalDistance: '37 km',
+                        totalTime: '35 min',
+                        points: [
+                            { name: 'Luchthaven Ljubljana', type: 'start' },
+                            { name: 'Kasteel van Bled', type: 'stop', distance: '35 km', time: '30 min' },
+                            { name: 'Meer van Bled', type: 'stop', distance: '3 km', time: '1 min' },
+                            { name: 'Bled', type: 'end', distance: '2 km', time: '5 min' }
+                        ]
+                    },
                     gallery: {
                         largeSquare: 'https://placehold.co/1200x1200/0284c7/FFFFFF?text=Foto+Dag+1',
                         vertVideo: '',
@@ -520,6 +547,16 @@
                     color: 'text-green-400', 
                     story: '<p>Vandaag stond in het teken van water. We begonnen bij de Vintgar-kloof... en voelden ons nietig te midden van de grootsheid van Triglav Nationaal Park.</p>', 
                     highlights: '<ul><li>Wandelen over de houten paden van de Vintgar-kloof.</li><li>Kanoën op het Meer van Bohinj.</li></ul>',
+                    route: {
+                        totalDistance: '45 km',
+                        totalTime: '1 uur 10 min',
+                        points: [
+                            { name: 'Bled', type: 'start' },
+                            { name: 'Vintgar-kloof', type: 'stop', distance: '5 km', time: '10 min' },
+                            { name: 'Savica-waterval', type: 'stop', distance: '35 km', time: '50 min' },
+                            { name: 'Bohinj', type: 'end', distance: '5 km', time: '10 min' }
+                        ]
+                    },
                     gallery: {
                         largeSquare: 'https://placehold.co/1200x1200/16a34a/FFFFFF?text=Foto+Dag+2',
                         vertVideo: '',
@@ -536,6 +573,16 @@
                     color: 'text-red-400', 
                     story: '<p>We reden naar Goriška Brda, de gerenommeerde wijnregio van Slovenië... een eenvoudige maar diepgaande culinaire ervaring.</p>', 
                     highlights: '<ul><li>Proeven van Rebula-wijn.</li><li>Genieten van lokale prosciutto en kaas.</li></ul>',
+                    route: {
+                        totalDistance: '80 km',
+                        totalTime: '1 uur 40 min',
+                        points: [
+                            { name: 'Bohinj', type: 'start' },
+                            { name: 'Most na Soči', type: 'stop', distance: '40 km', time: '50 min' },
+                            { name: 'Kanal ob Soči', type: 'stop', distance: '20 km', time: '25 min' },
+                            { name: 'Goriška Brda', type: 'end', distance: '20 km', time: '25 min' }
+                        ]
+                    },
                     gallery: {
                         largeSquare: 'https://placehold.co/1200x1200/dc2626/FFFFFF?text=Foto+Dag+3',
                         vertVideo: '',
@@ -552,6 +599,16 @@
                     color: 'text-cyan-400', 
                     story: '<p>Van de groene heuvels naar de blauwe zee! We kwamen aan in Piran... een prachtig contrast met de Alpen.</p>', 
                     highlights: '<ul><li>De klokkentoren van Piran beklimmen.</li><li>Diner met zeevruchten aan de Adriatische zee.</li></ul>',
+                    route: {
+                        totalDistance: '93 km',
+                        totalTime: '1 uur 40 min',
+                        points: [
+                            { name: 'Goriška Brda', type: 'start' },
+                            { name: 'Štanjel', type: 'stop', distance: '30 km', time: '35 min' },
+                            { name: 'Koper', type: 'stop', distance: '45 km', time: '40 min' },
+                            { name: 'Piran', type: 'end', distance: '18 km', time: '25 min' }
+                        ]
+                    },
                     gallery: {
                         largeSquare: 'https://placehold.co/1200x1200/0891b2/FFFFFF?text=Foto+Dag+4',
                         vertVideo: '',
@@ -568,6 +625,15 @@
                     color: 'text-amber-400', 
                     story: '<p>Vandaag verkenden we de Karst-regio, te beginnen met de prachtige Grotten van Škocjan... De geschiedenis was fascinerend.</p>', 
                     highlights: '<ul><li>De Grotten van Škocjan verkennen.</li><li>Een bezoek aan Kasteel Predjama.</li></ul>',
+                    route: {
+                        totalDistance: '60 km',
+                        totalTime: '55 min',
+                        points: [
+                            { name: 'Piran', type: 'start' },
+                            { name: 'Grotten van Škocjan', type: 'stop', distance: '35 km', time: '30 min' },
+                            { name: 'Postojna', type: 'end', distance: '25 km', time: '25 min' }
+                        ]
+                    },
                     gallery: {
                         largeSquare: 'https://placehold.co/1200x1200/d97706/FFFFFF?text=Foto+Dag+5',
                         vertVideo: '',
@@ -584,6 +650,14 @@
                     color: 'text-indigo-400', 
                     story: '<p>We brachten de dag door in Ljubljana, een van Europa\'s groenste hoofdsteden... een stad gebouwd voor mensen, niet alleen voor auto\'s.</p>', 
                     highlights: '<ul><li>Wandelen langs de rivier de Ljubljanica.</li><li>Een bezoek aan het Kasteel van Ljubljana.</li></ul>',
+                    route: {
+                        totalDistance: '55 km',
+                        totalTime: '45 min',
+                        points: [
+                            { name: 'Postojna', type: 'start' },
+                            { name: 'Ljubljana', type: 'end', distance: '55 km', time: '45 min' }
+                        ]
+                    },
                     gallery: {
                         largeSquare: 'https://placehold.co/1200x1200/4f46e5/FFFFFF?text=Foto+Dag+6',
                         vertVideo: '',
@@ -600,6 +674,15 @@
                     color: 'text-emerald-400', 
                     story: '<p>Het laatste deel van onze reis bracht ons naar de Soča-vallei... en verbond ons diep met het land.</p>', 
                     highlights: '<ul><li>Wandelen langs de Soča-rivier.</li><li>De Kozjak-waterval ontdekken.</li></ul>',
+                    route: {
+                        totalDistance: '112 km',
+                        totalTime: '2 uur 15 min',
+                        points: [
+                            { name: 'Ljubljana', type: 'start' },
+                            { name: 'Vršičpas', type: 'stop', distance: '90 km', time: '1 uur 45 min' },
+                            { name: 'Soča Vallei (Bovec)', type: 'end', distance: '22 km', time: '30 min' }
+                        ]
+                    },
                     gallery: {
                         largeSquare: 'https://placehold.co/1200x1200/059669/FFFFFF?text=Foto+Dag+7',
                         vertVideo: '',
@@ -628,25 +711,98 @@
             }
             
             // --- PAGE GENERATION LOGIC ---
-            // This loop builds each day page from the template and the data object.
             for (const day in dayData) {
                 const container = document.getElementById(`${day}-page`);
                 if (container) {
                     const clone = document.importNode(template, true);
+                    const dayInfo = dayData[day];
                     
                     // Populate text content
                     const titleEl = clone.querySelector('.day-title');
-                    titleEl.textContent = dayData[day].title;
-                    titleEl.classList.add(dayData[day].color);
+                    titleEl.textContent = dayInfo.title;
+                    titleEl.classList.add(dayInfo.color);
 
-                    clone.querySelector('.day-meta').textContent = dayData[day].meta;
-                    clone.querySelector('.story-content').innerHTML = dayData[day].story;
-                    clone.querySelector('.highlights-content').innerHTML = dayData[day].highlights;
+                    clone.querySelector('.day-meta').textContent = dayInfo.meta;
+                    clone.querySelector('.story-content').innerHTML = dayInfo.story;
+                    clone.querySelector('.highlights-content').innerHTML = dayInfo.highlights;
 
-                    // --- NEW: Populate gallery content ---
-                    if (dayData[day].gallery) {
-                        const galleryData = dayData[day].gallery;
-                        // Helper function to set image/video sources
+                    // --- Populate Route Timeline ---
+                    if (dayInfo.route && dayInfo.route.points) {
+                        const routeSection = clone.querySelector('.route-details-section');
+                        routeSection.classList.remove('hidden');
+
+                        clone.querySelector('.route-total-distance').textContent = dayInfo.route.totalDistance;
+                        clone.querySelector('.route-total-time').textContent = dayInfo.route.totalTime;
+
+                        const timelineContainer = clone.querySelector('.route-timeline-container');
+                        timelineContainer.innerHTML = ''; // Clear placeholder
+
+                        const timelineEl = document.createElement('div');
+                        timelineEl.className = 'flex items-start w-full';
+
+                        dayInfo.route.points.forEach((point, index) => {
+                            const isAbove = index % 2 !== 0;
+                            const isFirst = index === 0;
+                            const isLast = index === dayInfo.route.points.length - 1;
+
+                            // Point Element
+                            const pointWrapper = document.createElement('div');
+                            pointWrapper.className = `flex flex-col ${isAbove ? 'justify-start' : 'justify-end'} items-center`;
+                            
+                            const textEl = document.createElement('div');
+                            textEl.className = `text-center px-2 ${isAbove ? 'mb-2' : 'mt-2'}`;
+                            textEl.innerHTML = `<p class="font-bold text-lg dark-text-primary">${point.name}</p>`;
+
+                            const lineEl = document.createElement('div');
+                            lineEl.className = 'w-px h-12 bg-gray-500';
+
+                            const circleEl = document.createElement('div');
+                            let circleColor = 'bg-cyan-400'; // Default for stops
+                            if (point.type === 'start') circleColor = 'bg-green-400';
+                            if (point.type === 'end') circleColor = 'bg-red-400';
+                            circleEl.className = `w-5 h-5 rounded-full ${circleColor} border-4 border-gray-800`;
+
+                            if (isAbove) {
+                                pointWrapper.appendChild(textEl);
+                                pointWrapper.appendChild(lineEl);
+                                pointWrapper.appendChild(circleEl);
+                            } else {
+                                pointWrapper.appendChild(circleEl);
+                                pointWrapper.appendChild(lineEl);
+                                pointWrapper.appendChild(textEl);
+                            }
+                            
+                            timelineEl.appendChild(pointWrapper);
+
+                            // Connector Element
+                            if (!isLast) {
+                                const nextPoint = dayInfo.route.points[index + 1];
+                                const connectorWrapper = document.createElement('div');
+                                connectorWrapper.className = 'flex-grow px-2 text-center relative';
+                                connectorWrapper.style.paddingTop = isAbove ? '84px' : '0';
+                                connectorWrapper.style.paddingBottom = isAbove ? '0' : '84px';
+
+
+                                const lineH = document.createElement('div');
+                                lineH.className = 'h-1 bg-gray-600 w-full';
+                                
+                                const textH = document.createElement('div');
+                                textH.className = 'absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 px-2 bg-gray-800';
+                                textH.innerHTML = `<p class="text-sm text-amber-400 whitespace-nowrap">${nextPoint.distance} &bull; ${nextPoint.time}</p>`;
+
+                                connectorWrapper.appendChild(lineH);
+                                connectorWrapper.appendChild(textH);
+                                timelineEl.appendChild(connectorWrapper);
+                            }
+                        });
+
+                        timelineContainer.appendChild(timelineEl);
+                    }
+
+
+                    // --- Populate gallery content ---
+                    if (dayInfo.gallery) {
+                        const galleryData = dayInfo.gallery;
                         const setMediaSource = (selector, src, isVideo = false, posterSrc = '') => {
                             const el = clone.querySelector(selector);
                             if (el && src) {
