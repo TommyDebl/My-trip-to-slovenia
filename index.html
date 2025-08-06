@@ -78,6 +78,23 @@
             border-color: #4b5563; /* gray-600 */
             color: #f3f4f6; /* gray-100 */
         }
+        /* --- NEW: Scroll Fade Effect --- */
+        body::after {
+            content: '';
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 5rem;
+            background: linear-gradient(to top, #111827 20%, transparent);
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+            z-index: 100;
+        }
+        body.show-scroll-fade::after {
+            opacity: 1;
+        }
     </style>
 </head>
 <body class="bg-gray-900">
@@ -527,7 +544,6 @@
                         points: [
                             { name: 'Luchthaven Ljubljana', type: 'start' },
                             { name: 'Kasteel van Bled', type: 'stop', distance: '35 km', time: '30 min' },
-                            { name: 'Meer van Bled', type: 'stop', distance: '3 km', time: '1 min' },
                             { name: 'Bled', type: 'end', distance: '2 km', time: '5 min' }
                         ]
                     },
@@ -879,6 +895,25 @@
                         mobileMenu.classList.add('hidden');
                     }
                 });
+            });
+
+            // --- NEW: Scroll Fade Logic ---
+            const handleScrollFade = () => {
+                const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+                // Show fade if content is scrollable and user is not at the bottom
+                if (scrollHeight > clientHeight && scrollTop + clientHeight < scrollHeight - 20) {
+                    document.body.classList.add('show-scroll-fade');
+                } else {
+                    document.body.classList.remove('show-scroll-fade');
+                }
+            };
+
+            // Check on load and on scroll
+            handleScrollFade();
+            window.addEventListener('scroll', handleScrollFade);
+            // Also check when switching pages
+            new MutationObserver(handleScrollFade).observe(document.getElementById('main-content'), {
+                childList: true, subtree: true
             });
         });
     </script>
