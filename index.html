@@ -34,7 +34,7 @@
         }
         /* Style for the video hero */
         .video-hero {
-            height: 60vh; /* Adjusted height */
+            height: 60vh;
             background-color: #111827; /* Fallback background color */
         }
         .video-background {
@@ -43,7 +43,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain; /* Changed from 'cover' to 'contain' to preserve aspect ratio */
             z-index: 10;
         }
         /* Page switching logic */
@@ -129,18 +129,18 @@
         <!-- Home Page -->
         <div id="home-page" class="page active">
             <!-- Video Hero Section -->
-            <section class="relative video-hero overflow-hidden">
+            <section class="relative video-hero flex items-center justify-center text-center overflow-hidden">
                 <video autoplay loop muted playsinline class="video-background" poster="https://placehold.co/1920x1080/44403c/FFFFFF?text=Your+Slovenian+Adventure+Video">
                     <source src="Intro.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
-            </section>
-
-            <!-- Title Section -->
-            <section class="dark-section text-center py-12">
-                <div class="container mx-auto px-6">
-                    <h1 class="text-5xl md:text-7xl font-bold mb-4 dark-text-primary">Proeven van Slovenië</h1>
-                    <p class="text-lg max-w-3xl mx-auto dark-text-secondary">Het onvergetelijk 7 daags avontuur<br>van Julie & Tommy</p>
+                <!-- Overlay -->
+                <div class="absolute top-0 left-0 w-full h-full bg-black/50 z-20"></div>
+                
+                <!-- Title Content -->
+                <div class="relative z-30 px-6">
+                    <h1 class="text-5xl md:text-7xl font-bold mb-4 text-white">Proeven van Slovenië</h1>
+                    <p class="text-lg max-w-3xl mx-auto text-gray-200">Het onvergetelijk 7 daags avontuur<br>van Julie & Tommy</p>
                 </div>
             </section>
 
@@ -220,12 +220,12 @@
                 <section class="mb-12 dark-card p-8 rounded-lg shadow-lg border-l-4 border-lime-500">
                      <h3 class="text-3xl font-bold dark-text-primary mb-6">Hoogtepunten & Hapjes</h3>
                      <div class="prose max-w-none dark-text-secondary leading-relaxed text-lg highlights-content">
-                        <ul>
-                            <li>Het proeven van de beroemde Bled-roomtaart ('kremšnita').</li>
-                            <li>Het luiden van de wensbel op het eiland van Bled.</li>
-                            <li>Het vinden van een verborgen waterval op een zijpad.</li>
-                            <li>De heerlijke lokale wijn die we bij het avondeten probeerden.</li>
-                        </ul>
+                         <ul>
+                             <li>Het proeven van de beroemde Bled-roomtaart ('kremšnita').</li>
+                             <li>Het luiden van de wensbel op het eiland van Bled.</li>
+                             <li>Het vinden van een verborgen waterval op een zijpad.</li>
+                             <li>De heerlijke lokale wijn die we bij het avondeten probeerden.</li>
+                         </ul>
                      </div>
                 </section>
             </main>
@@ -485,15 +485,15 @@
                     const scrollToSponsorSelector = link.dataset.scrollToSponsor;
                     if (targetId === 'sponsors-page' && scrollToSponsorSelector) {
                         setTimeout(() => {
-                           const sponsorElement = document.querySelector(scrollToSponsorSelector);
-                           if (sponsorElement) {
-                               sponsorElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                               sponsorElement.style.transition = 'outline 0.2s ease-in-out';
-                               sponsorElement.style.outline = '2px solid #fbbf24'; // amber-400
-                               setTimeout(() => {
-                                   sponsorElement.style.outline = 'none';
-                               }, 2000);
-                           }
+                            const sponsorElement = document.querySelector(scrollToSponsorSelector);
+                            if (sponsorElement) {
+                                sponsorElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                                sponsorElement.style.transition = 'outline 0.2s ease-in-out';
+                                sponsorElement.style.outline = '2px solid #fbbf24'; // amber-400
+                                setTimeout(() => {
+                                    sponsorElement.style.outline = 'none';
+                                }, 2000);
+                            }
                         }, 100);
                     }
 
